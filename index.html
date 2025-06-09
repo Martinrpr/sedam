@@ -1,22 +1,32 @@
+`index.html`
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SEDAM - Innovación Social para Adultos Mayores</title>
+  <title>SEDAM - El Sitio de los Adultos Mayores</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --color-bg: #ffffff;
       --color-text-base: #6b7280;
       --color-text-dark: #111827;
-      --color-primary: #2563eb; /* azul vibrante */
-      --color-secondary: #fbbf24; /* amarillo vibrante */
+      --color-primary: #2563eb;
+      --color-primary-hover: #1e40af;
+      --color-secondary: #fbbf24;
+      --color-btn-1: #fde68a; /* amarillo pastel */
+      --color-btn-2: #bfdbfe; /* azul pastel */
+      --color-btn-3: #bbf7d0; /* verde pastel */
+      --color-btn-4: #fef3c7; /* amarillo muy claro */
       --border-radius: 0.75rem;
       --spacing-vertical: 4rem;
       --font-family: 'Poppins', Arial, sans-serif;
       --btn-height: 4.5rem;
+      --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
+      --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
     }
+
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -70,6 +80,26 @@
       user-select: none;
       letter-spacing: 0.05em;
     }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      align-items: center;
+    }
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      background-color: transparent;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background-color: var(--color-primary);
+      color: white;
+      outline: none;
+    }
     main {
       flex-grow: 1;
       padding-top: var(--spacing-vertical);
@@ -89,60 +119,45 @@
       line-height: 1.1;
       color: var(--color-text-dark);
       margin-bottom: 1rem;
+      user-select: text;
     }
     .hero p {
       font-size: 1.375rem;
       color: var(--color-text-base);
       max-width: 640px;
-      margin: 0 auto 2rem;
-    }
-    .btn-primary {
-      font-weight: 700;
-      font-size: 1.5rem;
-      background-color: var(--color-primary);
-      color: white;
-      padding: 0 3rem;
-      height: var(--btn-height);
-      border-radius: var(--border-radius);
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 9px rgba(37, 99, 235, 0.4);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      user-select: none;
-    }
-    .btn-primary:hover,
-    .btn-primary:focus-visible {
-      background-color: #1d4ed8;
-      transform: scale(1.05);
-      outline-offset: 2px;
+      margin: 0 auto;
+      user-select: text;
     }
     .content-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 3rem;
       align-items: stretch;
     }
     .content-card {
-      background: #f9fafb;
       border-radius: var(--border-radius);
-      box-shadow: 0 4px 8px rgb(0 0 0 / 0.05);
+      box-shadow: var(--shadow-base);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       padding: 2rem;
       transition: box-shadow 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      background: white;
+      user-select: none;
     }
     .content-card:hover,
     .content-card:focus-within {
-      box-shadow: 0 8px 20px rgb(37 99 235 / 0.3);
+      box-shadow: var(--shadow-hover);
       transform: translateY(-8px);
       outline: none;
     }
-    .content-image {
+    .svg-container {
       width: 100%;
       height: 180px;
-      border-radius: var(--border-radius);
-      object-fit: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 1.5rem;
       user-select: none;
     }
@@ -153,28 +168,72 @@
       margin-bottom: 0.75rem;
       line-height: 1.2;
       user-select: text;
+      text-align: center;
     }
     .content-description {
       font-size: 1.125rem;
       color: var(--color-text-base);
       flex-grow: 1;
       user-select: text;
-    }
-    footer {
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.875rem;
-      color: #9ca3af;
-      user-select: none;
-      border-top: 1px solid #e5e7eb;
-      margin-top: auto;
     }
+    /* Colores de fondo para cards (botones) */
+    .bg-1 { background: var(--color-btn-1); }
+    .bg-2 { background: var(--color-btn-2); }
+    .bg-3 { background: var(--color-btn-3); }
+    .bg-4 { background: var(--color-btn-4); }
+
+    /* Animaciones SVG */
+    .anim-cellphone path,
+    .anim-chat path,
+    .anim-document path,
+    .anim-faq path {
+      stroke: var(--color-primary);
+      fill: none;
+      stroke-width: 2;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    @keyframes pulseStroke {
+      0%, 100% { stroke-opacity: 1; }
+      50% { stroke-opacity: 0.4; }
+    }
+    .anim-cellphone path {
+      animation: pulseStroke 3s ease-in-out infinite;
+    }
+    .anim-chat path {
+      animation: pulseStroke 3.5s ease-in-out infinite;
+    }
+    .anim-document path {
+      animation: pulseStroke 4s ease-in-out infinite;
+    }
+    .anim-faq path {
+      animation: pulseStroke 4.5s ease-in-out infinite;
+    }
+    svg {
+      max-width: 140px;
+      max-height: 140px;
+      stroke-width: 2.5;
+    }
+
+    /* Centrar especificamente Preguntas Frecuentes */
+    .faq-card {
+      justify-self: center;
+      max-width: 320px;
+      background: var(--color-btn-4);
+    }
+
     @media (max-width: 480px) {
       .hero h1 {
         font-size: 2.5rem;
       }
-      .btn-primary {
-        width: 100%;
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
     }
   </style>
@@ -184,46 +243,83 @@
     <div class="container">
       <nav aria-label="Navegación principal">
         <div class="logo">SEDAM</div>
+        <div class="nav-links">
+          <a href="#inicio" tabindex="0">Inicio</a>
+          <a href="#quienes-somos" tabindex="0">Quiénes Somos</a>
+          <a href="#contacto" tabindex="0">Contacto</a>
+        </div>
       </nav>
     </div>
   </header>
   <main>
-    <section class="hero" role="region" aria-label="Introducción">
-      <h1>Innovación Social para Adultos Mayores</h1>
+    <section id="inicio" class="hero" role="region" aria-label="Introducción">
+      <h1>El Sitio de los Adultos Mayores</h1>
       <p>Aprende y accede fácilmente a contenidos digitales con botones grandes y colores claros pensados para ti.</p>
-      <button class="btn-primary" onclick="alert('Bienvenido a SEDAM')">Comenzar</button>
     </section>
     <section class="content-grid" role="region" aria-label="Contenidos principales">
-      <article class="content-card" tabindex="0">
-        <img class="content-image" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=70" alt="Adultos mayores aprendiendo con una tablet" loading="lazy"/>
+      <article class="content-card bg-1" tabindex="0" role="button" aria-pressed="false" onclick="alert('Cápsulas sobre Uso de Celulares')">
+        <div class="svg-container">
+          <svg class="anim-cellphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect x="18" y="8" width="28" height="48" rx="6" ry="6" stroke="currentColor" fill="none" />
+            <circle cx="32" cy="54" r="3" stroke="currentColor" fill="none" />
+            <line x1="26" y1="20" x2="38" y2="20" stroke="currentColor" />
+            <line x1="26" y1="28" x2="38" y2="28" stroke="currentColor" />
+            <line x1="26" y1="36" x2="38" y2="36" stroke="currentColor" />
+            <line x1="26" y1="44" x2="38" y2="44" stroke="currentColor" />
+          </svg>
+        </div>
         <h2 class="content-title">Cápsulas sobre Uso de Celulares</h2>
         <p class="content-description">Explicaciones sencillas para usar el celular y sus funciones básicas con confianza y seguridad.</p>
       </article>
-      <article class="content-card" tabindex="0">
-        <img class="content-image" src="https://images.unsplash.com/photo-1551817958-20204c2f87d3?auto=format&fit=crop&w=600&q=70" alt="Persona usando Whatsapp en celular" loading="lazy"/>
+      <article class="content-card bg-2" tabindex="0" role="button" aria-pressed="false" onclick="alert('Tutoriales de Aplicaciones Básicas')">
+        <div class="svg-container">
+          <svg class="anim-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect x="12" y="12" width="40" height="32" rx="6" ry="6" stroke="currentColor" fill="none" />
+            <circle cx="20" cy="28" r="3" stroke="currentColor" fill="none" />
+            <circle cx="32" cy="28" r="3" stroke="currentColor" fill="none" />
+            <circle cx="44" cy="28" r="3" stroke="currentColor" fill="none" />
+            <path d="M22 44L18 52H46L42 44" stroke="currentColor" fill="none" />
+          </svg>
+        </div>
         <h2 class="content-title">Aplicaciones Básicas</h2>
         <p class="content-description">Tutoriales para WhatsApp, correo electrónico, videollamadas y redes sociales de forma accesible.</p>
       </article>
-      <article class="content-card" tabindex="0">
-        <img class="content-image" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=70" alt="Mujer mayor usando computadora" loading="lazy"/>
+      <article class="content-card bg-3" tabindex="0" role="button" aria-pressed="false" onclick="alert('Guías para Trámites Digitales')">
+        <div class="svg-container">
+          <svg class="anim-document" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect x="16" y="8" width="32" height="48" rx="4" ry="4" stroke="currentColor" fill="none" />
+            <line x1="24" y1="20" x2="40" y2="20" stroke="currentColor" />
+            <line x1="24" y1="28" x2="40" y2="28" stroke="currentColor" />
+            <line x1="24" y1="36" x2="40" y2="36" stroke="currentColor" />
+            <line x1="24" y1="44" x2="36" y2="44" stroke="currentColor" />
+          </svg>
+        </div>
         <h2 class="content-title">Guías para Trámites Digitales</h2>
         <p class="content-description">Pasos claros para acceder a servicios públicos y realizar trámites en línea sin complicaciones.</p>
       </article>
-      <article class="content-card" tabindex="0">
-        <img class="content-image" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=70" alt="Adulto mayor navegando seguro en internet" loading="lazy"/>
-        <h2 class="content-title">Navegación Segura</h2>
-        <p class="content-description">Consejos para proteger tu información y navegar con confianza en el mundo digital.</p>
-      </article>
-      <article class="content-card" tabindex="0">
-        <img class="content-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=70" alt="Adulto mayor comunicándose con su familia" loading="lazy"/>
-        <h2 class="content-title">Comunicación Efectiva</h2>
-        <p class="content-description">Mejora tus habilidades para comunicarte usando tecnología y conectarte con tus seres queridos.</p>
-      </article>
-      <article class="content-card" tabindex="0">
-        <img class="content-image" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=70" alt="Persona revisando preguntas frecuentes en computadora" loading="lazy"/>
+      <article class="content-card bg-4 faq-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Preguntas Frecuentes')">
+        <div class="svg-container">
+          <svg class="anim-faq" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <circle cx="32" cy="32" r="24" stroke="currentColor" fill="none" />
+            <path d="M28 26a4 4 0 0 1 8 0c0 6-8 6-8 12" stroke="currentColor" fill="none" />
+            <circle cx="32" cy="44" r="2" stroke="currentColor" fill="none" />
+          </svg>
+        </div>
         <h2 class="content-title">Preguntas Frecuentes</h2>
         <p class="content-description">Respuestas claras a las dudas más comunes sobre el uso digital y la plataforma SEDAM.</p>
       </article>
+    </section>
+    <section id="quienes-somos" style="margin-top: 5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <h2 style="font-weight: 700; color: var(--color-text-dark); margin-bottom: 1rem; text-align:center;">Quiénes Somos</h2>
+      <p style="color: var(--color-text-base); font-size: 1rem; line-height: 1.5; text-align:center;">
+        SEDAM es un proyecto dedicado a facilitar el acceso digital a adultos mayores, ofreciendo contenidos claros, accesibles y pensados para sus necesidades.
+      </p>
+    </section>
+    <section id="contacto" style="margin-top: 5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      <h2 style="font-weight: 700; color: var(--color-text-dark); margin-bottom: 1rem; text-align:center;">Contacto</h2>
+      <p style="color: var(--color-text-base); font-size: 1rem; line-height: 1.5; text-align:center;">
+        Para más información o preguntas, puedes contactarnos a través de correo electrónico o redes sociales.
+      </p>
     </section>
   </main>
   <footer>
@@ -232,3 +328,4 @@
 </body>
 </html>
 
+```
