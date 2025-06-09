@@ -26,10 +26,13 @@
       --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
       --emergency-btn-size: 80px;
       --emergency-btn-z-index: 11000;
-      --tooltip-font-size: 1.125rem;
+      --tooltip-font-size: 1rem;
       --tooltip-color: #dc2626;
-      --tooltip-text-transform: uppercase;
       --tooltip-font-weight: 700;
+      --tooltip-text-transform: uppercase;
+      --tooltip-padding: 8px 14px;
+      --tooltip-border-radius: 6px;
+      --tooltip-gap: 10px;
     }
 
     *, *::before, *::after {
@@ -224,7 +227,6 @@
       max-height: 140px;
       stroke-width: 2.5;
     }
-
     @media (max-width: 600px) {
       .content-grid {
         grid-template-areas:
@@ -243,7 +245,6 @@
         font-size: 20px; /* Texto más grande en móvil */
       }
     }
-
     /* Botón para aumentar texto */
     #btn-aumentar-texto {
       position: fixed;
@@ -265,7 +266,6 @@
       background: var(--color-primary-hover);
       outline: none;
     }
-
     /* Botón emergente de emergencia (alarma roja) */
     #btn-emergencia {
       position: fixed;
@@ -284,9 +284,6 @@
       z-index: var(--emergency-btn-z-index);
       transition: background-color 0.3s ease, transform 0.2s ease;
       user-select: none;
-      position: fixed;
-      bottom: 1.5rem;
-      left: 1.5rem;
     }
     #btn-emergencia:hover, #btn-emergencia:focus-visible {
       background-color: #b91c1c;
@@ -302,31 +299,32 @@
       fill: none;
       stroke-linejoin: round;
       stroke-linecap: round;
-      transition: stroke 0.3s ease;
     }
-    /* Tooltip on hover with styled text */
+    /* Tooltip on hover to right */
     #btn-emergencia:hover::after,
     #btn-emergencia:focus-visible::after {
       content: attr(title);
       position: absolute;
-      bottom: 110%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(220, 38, 38, 0.95);
+      top: 50%;
+      left: calc(var(--emergency-btn-size) + 10px);
+      transform: translateY(-50%);
+      background: var(--color-emergency-red);
       color: white;
-      padding: 8px 12px;
+      padding: 8px 14px;
       border-radius: 6px;
-      font-size: var(--tooltip-font-size, 1.125rem);
-      font-weight: var(--tooltip-font-weight, 700);
+      font-size: var(--tooltip-font-size);
+      font-weight: var(--tooltip-font-weight);
       letter-spacing: 0.1em;
-      text-transform: var(--tooltip-text-transform, uppercase);
+      text-transform: var(--tooltip-text-transform);
       white-space: nowrap;
       pointer-events: none;
       opacity: 1;
       visibility: visible;
-      z-index: 10002;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      z-index: 10002;
       transition: opacity 0.3s ease;
+      user-select: none;
+      max-width: 300px;
     }
     #btn-emergencia::after {
       content: '';
