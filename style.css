@@ -1,25 +1,27 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  text-align: center;
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa;
-  text-align: center;
 }
 
 header {
-  background-color: #eaf3ff;
   padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 header h1 {
-  font-size: 2.8rem;
-  color: #222;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
 }
 
 header p {
-  font-size: 1.4rem;
-  color: #444;
+  font-size: 1.2rem;
+  color: #555;
 }
 
 .button-container {
@@ -31,14 +33,18 @@ header p {
 }
 
 .btn {
-  width: 280px;
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 240px;
+  font-size: 1.3rem;
+  font-weight: bold;
   border-radius: 20px;
-  padding: 2rem 1rem;
   text-decoration: none;
-  color: #222;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
 }
 
@@ -46,36 +52,21 @@ header p {
   transform: scale(1.05);
 }
 
-.btn.yellow {
-  background-color: #fff4b3;
-}
+/* Colores específicos para cada botón */
+.yellow { background-color: #ffe57f; }
+.blue   { background-color: #add8ff; }
+.green  { background-color: #c1f2c7; }
+.purple { background-color: #e1d4ff; }
+.pink   { background-color: #ffccda; }
 
-.btn.blue {
-  background-color: #cce4ff;
-}
-
-.btn.green {
-  background-color: #d4fcdc;
-}
-
-.btn.purple {
-  background-color: #eadcff;
-}
-
-.btn.pink {
-  background-color: #ffe0e6;
-}
-
-.btn svg {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 1rem;
-  fill: #444;
+.btn::before {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
 
 footer {
-  background-color: #eaf3ff;
+  background-color: #f1f1f1;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #555;
 }
