@@ -133,8 +133,7 @@
       align-items: stretch;
       grid-template-areas:
         "celular aplicaciones"
-        "tramites tramites"
-        "faq faq";
+        "tramites faq";
     }
     /* Areas para posicionar tarjetas */
     .content-card.bg-1 { grid-area: celular; background: var(--color-btn-1); }
@@ -280,7 +279,7 @@
       <p>Aprende y accede fácilmente a contenidos digitales con botones grandes y colores claros pensados para ti.</p>
     </section>
     <section class="content-grid" role="region" aria-label="Contenidos principales">
-      <article class="content-card bg-1" tabindex="0" role="button" aria-pressed="false" onclick="alert('Cápsulas sobre Uso de Celulares')">
+      <article class="content-card bg-1" tabindex="0" role="button" aria-pressed="false" onclick="location.href='capsulas.html'">
         <div class="svg-container">
           <svg class="anim-cellphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
             <rect x="18" y="8" width="28" height="48" rx="6" ry="6" stroke="currentColor" fill="none" />
@@ -295,7 +294,7 @@
         <p class="content-description">Explicaciones sencillas para usar el celular y sus funciones básicas con confianza y seguridad.</p>
       </article>
       
-      <article class="content-card bg-2" tabindex="0" role="button" aria-pressed="false" onclick="alert('Tutoriales de Aplicaciones Básicas')">
+      <article class="content-card bg-2" tabindex="0" role="button" aria-pressed="false" onclick="location.href='aplicaciones.html'">
         <div class="svg-container">
           <svg class="anim-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
             <rect x="12" y="12" width="40" height="32" rx="6" ry="6" stroke="currentColor" fill="none" />
@@ -309,19 +308,7 @@
         <p class="content-description">Tutoriales para WhatsApp, correo electrónico, videollamadas y redes sociales de forma accesible.</p>
       </article>
       
-      <article class="content-card bg-4 faq-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Preguntas Frecuentes')">
-        <div class="svg-container">
-          <svg class="anim-faq" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-            <circle cx="32" cy="32" r="24" stroke="currentColor" fill="none" />
-            <path d="M28 26a4 4 0 0 1 8 0c0 6-8 6-8 12" stroke="currentColor" fill="none" />
-            <circle cx="32" cy="44" r="2" stroke="currentColor" fill="none" />
-          </svg>
-        </div>
-        <h2 class="content-title">Preguntas Frecuentes</h2>
-        <p class="content-description">Respuestas claras a las dudas más comunes sobre el uso digital y la plataforma SEDAM.</p>
-      </article>
-      
-      <article class="content-card bg-3" tabindex="0" role="button" aria-pressed="false" onclick="alert('Guías para Trámites Digitales')">
+      <article class="content-card bg-3" tabindex="0" role="button" aria-pressed="false" onclick="alert('Guías para Trámites Digitales: próximamente')">
         <div class="svg-container">
           <svg class="anim-document" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
             <rect x="16" y="8" width="32" height="48" rx="4" ry="4" stroke="currentColor" fill="none" />
@@ -333,6 +320,18 @@
         </div>
         <h2 class="content-title">Guías para Trámites Digitales</h2>
         <p class="content-description">Pasos claros para acceder a servicios públicos y realizar trámites en línea sin complicaciones.</p>
+      </article>
+      
+      <article class="content-card bg-4 faq-card" tabindex="0" role="button" aria-pressed="false" onclick="alert('Preguntas Frecuentes: próximamente')">
+        <div class="svg-container">
+          <svg class="anim-faq" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <circle cx="32" cy="32" r="24" stroke="currentColor" fill="none" />
+            <path d="M28 26a4 4 0 0 1 8 0c0 6-8 6-8 12" stroke="currentColor" fill="none" />
+            <circle cx="32" cy="44" r="2" stroke="currentColor" fill="none" />
+          </svg>
+        </div>
+        <h2 class="content-title">Preguntas Frecuentes</h2>
+        <p class="content-description">Respuestas claras a las dudas más comunes sobre el uso digital y la plataforma SEDAM.</p>
       </article>
     </section>
   </main>
@@ -354,3 +353,4 @@
   </footer>
 </body>
 </html>
+
