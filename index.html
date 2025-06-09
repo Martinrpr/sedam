@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Página Temporal - GitHub Pages</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <title>SEDAM - Innovación Social para Adultos Mayores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --color-bg: #ffffff;
-      --color-text: #6b7280;
-      --color-primary: #111827;
-      --color-primary-hover: #374151;
-      --spacing-vertical: 4rem;
+      --color-text-base: #6b7280;
+      --color-text-dark: #111827;
+      --color-primary: #2563eb; /* azul vibrante */
+      --color-secondary: #fbbf24; /* amarillo vibrante */
       --border-radius: 0.75rem;
-      --shadow-light: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-hover: 0 10px 15px rgba(0,0,0,0.1);
+      --spacing-vertical: 4rem;
       --font-family: 'Poppins', Arial, sans-serif;
+      --btn-height: 4.5rem;
     }
     *, *::before, *::after {
       box-sizing: border-box;
@@ -23,20 +23,24 @@
     body {
       margin: 0;
       background-color: var(--color-bg);
-      color: var(--color-text);
+      color: var(--color-text-base);
       font-family: var(--font-family);
       line-height: 1.6;
       font-size: 18px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     a {
       color: inherit;
       text-decoration: none;
       transition: color 0.3s ease;
     }
-    a:hover, button:hover {
-      color: var(--color-primary-hover);
+    a:hover, button:hover, button:focus-visible {
+      color: var(--color-primary);
+      outline: none;
     }
     header {
       position: sticky;
@@ -44,6 +48,7 @@
       background: var(--color-bg);
       border-bottom: 1px solid #e5e7eb;
       z-index: 1000;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
     }
     .container {
       max-width: 1200px;
@@ -56,112 +61,104 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 4.5rem;
+      height: 5rem;
     }
     .logo {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       color: var(--color-primary);
       user-select: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .nav-links a {
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.375rem;
-    }
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      background-color: #f3f4f6;
-      outline: none;
-      color: var(--color-primary);
+      letter-spacing: 0.05em;
     }
     main {
+      flex-grow: 1;
       padding-top: var(--spacing-vertical);
       padding-bottom: var(--spacing-vertical);
-    }
-    .hero {
-      text-align: center;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 1200px;
+      margin: 0 auto;
       padding-left: 1rem;
       padding-right: 1rem;
     }
+    .hero {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
     .hero h1 {
-      font-size: 3rem;
       font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
+      font-size: 3.5rem;
       line-height: 1.1;
+      color: var(--color-text-dark);
+      margin-bottom: 1rem;
     }
     .hero p {
-      font-size: 1.25rem;
-      color: var(--color-text);
-      margin-bottom: 2.5rem;
+      font-size: 1.375rem;
+      color: var(--color-text-base);
+      max-width: 640px;
+      margin: 0 auto 2rem;
     }
     .btn-primary {
-      background-color: var(--color-primary);
-      color: #fff;
       font-weight: 700;
-      font-size: 1.125rem;
-      padding: 0.75rem 2.25rem;
-      border: none;
+      font-size: 1.5rem;
+      background-color: var(--color-primary);
+      color: white;
+      padding: 0 3rem;
+      height: var(--btn-height);
       border-radius: var(--border-radius);
+      border: none;
       cursor: pointer;
+      box-shadow: 0 4px 9px rgba(37, 99, 235, 0.4);
       transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: var(--shadow-light);
       user-select: none;
     }
     .btn-primary:hover,
     .btn-primary:focus-visible {
-      background-color: var(--color-primary-hover);
-      outline: none;
+      background-color: #1d4ed8;
       transform: scale(1.05);
-      box-shadow: var(--shadow-hover);
+      outline-offset: 2px;
     }
-    .features {
-      margin-top: 5rem;
+    .content-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
+      gap: 3rem;
+      align-items: stretch;
     }
-    .feature-card {
-      background-color: #f9fafb;
+    .content-card {
+      background: #f9fafb;
       border-radius: var(--border-radius);
-      box-shadow: var(--shadow-light);
-      padding: 2rem;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.05);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      padding: 2rem;
       transition: box-shadow 0.3s ease, transform 0.2s ease;
     }
-    .feature-card:hover,
-    .feature-card:focus-within {
-      box-shadow: var(--shadow-hover);
-      transform: translateY(-6px);
+    .content-card:hover,
+    .content-card:focus-within {
+      box-shadow: 0 8px 20px rgb(37 99 235 / 0.3);
+      transform: translateY(-8px);
       outline: none;
     }
-    .feature-icon {
-      font-size: 2.5rem;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
+    .content-image {
+      width: 100%;
+      height: 180px;
+      border-radius: var(--border-radius);
+      object-fit: cover;
+      margin-bottom: 1.5rem;
       user-select: none;
     }
-    .feature-title {
-      font-size: 1.25rem;
+    .content-title {
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--color-primary);
+      color: var(--color-text-dark);
       margin-bottom: 0.75rem;
+      line-height: 1.2;
+      user-select: text;
     }
-    .feature-desc {
-      font-size: 1rem;
-      color: var(--color-text);
+    .content-description {
+      font-size: 1.125rem;
+      color: var(--color-text-base);
       flex-grow: 1;
+      user-select: text;
     }
     footer {
       text-align: center;
@@ -169,10 +166,12 @@
       font-size: 0.875rem;
       color: #9ca3af;
       user-select: none;
+      border-top: 1px solid #e5e7eb;
+      margin-top: auto;
     }
     @media (max-width: 480px) {
       .hero h1 {
-        font-size: 2.25rem;
+        font-size: 2.5rem;
       }
       .btn-primary {
         width: 100%;
@@ -181,56 +180,54 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="container" role="banner">
-      <nav aria-label="Sitio principal">
-        <a href="#" class="logo" aria-label="Logo de la página">MiSitio</a>
-        <div class="nav-links">
-          <a href="#features" tabindex="0">Características</a>
-          <a href="#about" tabindex="0">Acerca</a>
-          <a href="#contact" tabindex="0">Contacto</a>
-        </div>
+  <header role="banner">
+    <div class="container">
+      <nav aria-label="Navegación principal">
+        <div class="logo">SEDAM</div>
       </nav>
     </div>
   </header>
   <main>
-    <section class="hero" role="region" aria-label="Sección principal">
-      <h1>Construye tu presencia web fácilmente</h1>
-      <p>Una página limpia, elegante y moderna lista para GitHub Pages o tu dominio personalizado.</p>
-      <button class="btn-primary" onclick="alert('Gracias por iniciar')">Comenzar</button>
+    <section class="hero" role="region" aria-label="Introducción">
+      <h1>Innovación Social para Adultos Mayores</h1>
+      <p>Aprende y accede fácilmente a contenidos digitales con botones grandes y colores claros pensados para ti.</p>
+      <button class="btn-primary" onclick="alert('Bienvenido a SEDAM')">Comenzar</button>
     </section>
-    <section id="features" class="container features" role="region" aria-label="Características principales">
-      <article tabindex="0" class="feature-card">
-        <div class="feature-icon" aria-hidden="true">⚡</div>
-        <h2 class="feature-title">Rápido y Ligero</h2>
-        <p class="feature-desc">Carga ultra rápida para brindar la mejor experiencia a tus visitantes.</p>
+    <section class="content-grid" role="region" aria-label="Contenidos principales">
+      <article class="content-card" tabindex="0">
+        <img class="content-image" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=70" alt="Adultos mayores aprendiendo con una tablet" loading="lazy"/>
+        <h2 class="content-title">Cápsulas sobre Uso de Celulares</h2>
+        <p class="content-description">Explicaciones sencillas para usar el celular y sus funciones básicas con confianza y seguridad.</p>
       </article>
-      <article tabindex="0" class="feature-card">
-        <div class="feature-icon" aria-hidden="true">🎨</div>
-        <h2 class="feature-title">Diseño Moderno</h2>
-        <p class="feature-desc">Estética limpia y profesional que se adapta perfectamente a tu branding.</p>
+      <article class="content-card" tabindex="0">
+        <img class="content-image" src="https://images.unsplash.com/photo-1551817958-20204c2f87d3?auto=format&fit=crop&w=600&q=70" alt="Persona usando Whatsapp en celular" loading="lazy"/>
+        <h2 class="content-title">Aplicaciones Básicas</h2>
+        <p class="content-description">Tutoriales para WhatsApp, correo electrónico, videollamadas y redes sociales de forma accesible.</p>
       </article>
-      <article tabindex="0" class="feature-card">
-        <div class="feature-icon" aria-hidden="true">🔒</div>
-        <h2 class="feature-title">Seguro y Confiable</h2>
-        <p class="feature-desc">Protocolos estándar para que tu sitio siempre esté protegido y online.</p>
+      <article class="content-card" tabindex="0">
+        <img class="content-image" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=70" alt="Mujer mayor usando computadora" loading="lazy"/>
+        <h2 class="content-title">Guías para Trámites Digitales</h2>
+        <p class="content-description">Pasos claros para acceder a servicios públicos y realizar trámites en línea sin complicaciones.</p>
       </article>
-    </section>
-    <section id="about" class="container" style="margin-top: 5rem; max-width: 800px;">
-      <h2 style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">Acerca de esta página</h2>
-      <p style="color: var(--color-text); font-size: 1rem; line-height: 1.5;">
-        Esta es una página web temporal diseñada para demostrar una presencia limpia y profesional usando estándares web modernos y accesibilidad. Puedes usarla fácilmente en GitHub Pages y luego trasladarla a tu dominio propio.
-      </p>
-    </section>
-    <section id="contact" class="container" style="margin-top: 5rem; max-width: 600px;">
-      <h2 style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">Contacto</h2>
-      <p style="color: var(--color-text); font-size: 1rem; line-height: 1.5;">
-        Para más información o preguntas, puedes contactarme a través de las redes sociales o correo electrónico.
-      </p>
+      <article class="content-card" tabindex="0">
+        <img class="content-image" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=70" alt="Adulto mayor navegando seguro en internet" loading="lazy"/>
+        <h2 class="content-title">Navegación Segura</h2>
+        <p class="content-description">Consejos para proteger tu información y navegar con confianza en el mundo digital.</p>
+      </article>
+      <article class="content-card" tabindex="0">
+        <img class="content-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=70" alt="Adulto mayor comunicándose con su familia" loading="lazy"/>
+        <h2 class="content-title">Comunicación Efectiva</h2>
+        <p class="content-description">Mejora tus habilidades para comunicarte usando tecnología y conectarte con tus seres queridos.</p>
+      </article>
+      <article class="content-card" tabindex="0">
+        <img class="content-image" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&q=70" alt="Persona revisando preguntas frecuentes en computadora" loading="lazy"/>
+        <h2 class="content-title">Preguntas Frecuentes</h2>
+        <p class="content-description">Respuestas claras a las dudas más comunes sobre el uso digital y la plataforma SEDAM.</p>
+      </article>
     </section>
   </main>
   <footer>
-    &copy; 2024 MiSitio. Todos los derechos reservados.
+    &copy; 2024 SEDAM. Todos los derechos reservados.
   </footer>
 </body>
 </html>
