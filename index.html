@@ -126,6 +126,26 @@
       margin: 0 auto;
       user-select: text;
     }
+    .btn-primary {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background-color: var(--color-primary);
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: var(--border-radius);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-base);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 2rem;
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background-color: var(--color-primary-hover);
+      outline: none;
+      transform: scale(1.05);
+    }
     .content-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -277,6 +297,7 @@
     <section id="inicio" class="hero" role="region" aria-label="Introducción">
       <h1>El Sitio de los Adultos Mayores</h1>
       <p>Aprende y accede fácilmente a contenidos digitales con botones grandes y colores claros pensados para ti.</p>
+      <button class="btn-primary" onclick="location.href='contactos-emergencia.html'">Contactos de Emergencia</button>
     </section>
     <section class="content-grid" role="region" aria-label="Contenidos principales">
       <article class="content-card bg-1" tabindex="0" role="button" aria-pressed="false" onclick="location.href='capsulas.html'">
@@ -353,4 +374,3 @@
   </footer>
 </body>
 </html>
-
