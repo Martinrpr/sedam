@@ -1,0 +1,213 @@
+`contactos-emergencia.html`
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contactos de Emergencia - SEDAM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text-base: #6b7280;
+      --color-text-dark: #111827;
+      --color-red: #dc2626; /* rojo para bomberos */
+      --color-green: #22c55e; /* verde para carabineros */
+      --color-white: #ffffff; /* blanco para ambulancia */
+      --border-radius: 0.75rem;
+      --font-family: 'Poppins', Arial, sans-serif;
+      --btn-height: 4.5rem;
+      --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
+      --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: var(--color-bg);
+      color: var(--color-text-base);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.05);
+      z-index: 1000;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: var(--color-primary, #2563eb);
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+    nav a {
+      color: var(--color-text-base);
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 1.5rem;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--color-primary, #2563eb);
+      outline: none;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 700px;
+      margin: 4rem auto 4rem;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 3.5rem;
+      color: var(--color-text-dark);
+      margin-bottom: 2.5rem;
+      user-select: text;
+    }
+    .btn-emergency {
+      display: block;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      box-shadow: var(--shadow-base);
+      border: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 2rem;
+      width: 300px;
+      margin: 0 auto 0.35rem auto;
+      padding: 1.25rem 0;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .btn-ambulance {
+      background-color: var(--color-white);
+      color: #111;
+      border: 3px solid #111;
+    }
+    .btn-ambulance:hover,
+    .btn-ambulance:focus-visible {
+      background-color: #f3f4f6;
+      outline: none;
+      transform: scale(1.05);
+    }
+    .btn-fire {
+      background-color: var(--color-red);
+    }
+    .btn-fire:hover,
+    .btn-fire:focus-visible {
+      background-color: #b91c1c;
+      outline: none;
+      transform: scale(1.05);
+    }
+    .btn-police {
+      background-color: var(--color-green);
+    }
+    .btn-police:hover,
+    .btn-police:focus-visible {
+      background-color: #16a34a;
+      outline: none;
+      transform: scale(1.05);
+    }
+    .desc {
+      font-size: 1.25rem;
+      margin-bottom: 3rem;
+      color: var(--color-text-base);
+      user-select: text;
+    }
+    /* Minimal icon styles */
+    svg.em-icon {
+      width: 36px;
+      height: 36px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    @media (max-width: 480px) {
+      main {
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+        max-width: 100%;
+      }
+      .btn-emergency {
+        width: 80%;
+        font-size: 1.75rem;
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SEDAM</div>
+    <nav aria-label="Navegación Principal">
+      <a href="index.html">Inicio</a>
+      <a href="quienes-somos.html">Quiénes Somos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Contactos de Emergencia</h1>
+
+    <a href="tel:133" class="btn-emergency btn-police" aria-label="Llamar a Carabineros 133">
+      <svg class="em-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <circle cx="32" cy="32" r="28" />
+        <path d="M28 26a4 4 0 0 1 8 0c0 6-8 6-8 12" />
+        <circle cx="32" cy="44" r="2" />
+      </svg>
+      133
+    </a>
+    <p class="desc">Carabineros</p>
+
+    <a href="tel:132" class="btn-emergency btn-fire" aria-label="Llamar a Bomberos 132">
+      <svg class="em-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <path d="M32 4C19 4 4 28 4 44a28 28 0 0 0 56 0c0-16-15-40-28-40z" />
+        <path d="M32 12a8 8 0 0 0-8 8c0 6 8 14 8 14s8-8 8-14a8 8 0 0 0-8-8z" />
+      </svg>
+      132
+    </a>
+    <p class="desc">Bomberos</p>
+
+    <a href="tel:131" class="btn-emergency btn-ambulance" aria-label="Llamar a Ambulancia 131">
+      <svg class="em-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false" >
+        <rect x="14" y="18" width="36" height="20" rx="4" ry="4" />
+        <circle cx="22" cy="44" r="5" />
+        <circle cx="42" cy="44" r="5" />
+        <path d="M24 18v-4h4v4"/>
+        <path d="M34 18v-4h4v4"/>
+      </svg>
+      131
+    </a>
+    <p class="desc">Ambulancia</p>
+
+  </main>
+</body>
+</html>
+
+```
