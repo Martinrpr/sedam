@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SEDAM - El Sitio de los Adultos Mayores</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --color-bg: #ffffff;
@@ -17,14 +17,19 @@
       --color-btn-2: #bfdbfe; /* azul pastel */
       --color-btn-3: #bbf7d0; /* verde pastel */
       --color-btn-4: #fef3c7; /* amarillo muy claro */
+      --color-emergency-red: #dc2626;
       --border-radius: 0.75rem;
       --spacing-vertical: 4rem;
       --font-family: 'Poppins', Arial, sans-serif;
       --btn-height: 4.5rem;
       --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
       --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
-      --emergency-btn-size: 56px;
-      --emergency-btn-z-index: 10000;
+      --emergency-btn-size: 80px;
+      --emergency-btn-z-index: 11000;
+      --tooltip-font-size: 1.125rem;
+      --tooltip-color: #dc2626;
+      --tooltip-text-transform: uppercase;
+      --tooltip-font-weight: 700;
     }
 
     *, *::before, *::after {
@@ -266,9 +271,9 @@
       position: fixed;
       bottom: 1.5rem;
       left: 1.5rem;
-      width: 56px;
-      height: 56px;
-      background-color: #dc2626; /* rojo alarmante */
+      width: var(--emergency-btn-size);
+      height: var(--emergency-btn-size);
+      background-color: var(--color-emergency-red);
       border-radius: 50%;
       border: none;
       box-shadow: 0 4px 12px rgba(220, 38, 38, 0.6);
@@ -276,24 +281,59 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1100;
+      z-index: var(--emergency-btn-z-index);
       transition: background-color 0.3s ease, transform 0.2s ease;
       user-select: none;
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
     }
     #btn-emergencia:hover, #btn-emergencia:focus-visible {
       background-color: #b91c1c;
       outline: none;
-      transform: scale(1.1);
+      transform: scale(1.15);
       box-shadow: 0 6px 16px rgba(185, 28, 28, 0.8);
     }
     #btn-emergencia svg {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       stroke: white;
       stroke-width: 3;
       fill: none;
       stroke-linejoin: round;
       stroke-linecap: round;
+      transition: stroke 0.3s ease;
+    }
+    /* Tooltip on hover with styled text */
+    #btn-emergencia:hover::after,
+    #btn-emergencia:focus-visible::after {
+      content: attr(title);
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(220, 38, 38, 0.95);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: var(--tooltip-font-size, 1.125rem);
+      font-weight: var(--tooltip-font-weight, 700);
+      letter-spacing: 0.1em;
+      text-transform: var(--tooltip-text-transform, uppercase);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 1;
+      visibility: visible;
+      z-index: 10002;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: opacity 0.3s ease;
+    }
+    #btn-emergencia::after {
+      content: '';
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -392,6 +432,5 @@
       body.style.fontSize = newSize + 'px';
     }
   </script>
-
 </body>
 </html>
