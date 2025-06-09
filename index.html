@@ -1,24 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>SEDAM - Bienvenidos</title>
-  <link rel="stylesheet" href="estilo.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página Temporal - GitHub Pages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #6b7280;
+      --color-primary: #111827;
+      --color-primary-hover: #374151;
+      --spacing-vertical: 4rem;
+      --border-radius: 0.75rem;
+      --shadow-light: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-hover: 0 10px 15px rgba(0,0,0,0.1);
+      --font-family: 'Poppins', Arial, sans-serif;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, button:hover {
+      color: var(--color-primary-hover);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 1000;
+    }
+    .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4.5rem;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      user-select: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .nav-links a {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background-color: #f3f4f6;
+      outline: none;
+      color: var(--color-primary);
+    }
+    main {
+      padding-top: var(--spacing-vertical);
+      padding-bottom: var(--spacing-vertical);
+    }
+    .hero {
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--color-text);
+      margin-bottom: 2.5rem;
+    }
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 0.75rem 2.25rem;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: var(--shadow-light);
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background-color: var(--color-primary-hover);
+      outline: none;
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
+    }
+    .features {
+      margin-top: 5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background-color: #f9fafb;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+    .feature-card:hover,
+    .feature-card:focus-within {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-6px);
+      outline: none;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .feature-desc {
+      font-size: 1rem;
+      color: var(--color-text);
+      flex-grow: 1;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.875rem;
+      color: #9ca3af;
+      user-select: none;
+    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      .btn-primary {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>📱 Bienvenidos a SEDAM</h1>
-  <p class="intro">
-    Aprende a usar tu celular, comunicarte por WhatsApp, hacer videollamadas, navegar en internet, realizar trámites y mucho más.
-  </p>
-
-  <div class="botones">
-    <button onclick="location.href='celulares.html'">📲 Uso de Celulares</button>
-    <button onclick="location.href='whatsapp.html'">💬 WhatsApp</button>
-    <button onclick="location.href='correo.html'">✉️ Correo Electrónico</button>
-    <button onclick="location.href='videollamadas.html'">🎥 Videollamadas</button>
-    <button onclick="location.href='tramites.html'">📝 Trámites Digitales</button>
-    <button onclick="location.href='seguridad.html'">🔒 Seguridad en Internet</button>
-    <button onclick="location.href='faq.html'">❓ Preguntas Frecuentes</button>
-  </div>
+  <header>
+    <div class="container" role="banner">
+      <nav aria-label="Sitio principal">
+        <a href="#" class="logo" aria-label="Logo de la página">MiSitio</a>
+        <div class="nav-links">
+          <a href="#features" tabindex="0">Características</a>
+          <a href="#about" tabindex="0">Acerca</a>
+          <a href="#contact" tabindex="0">Contacto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" role="region" aria-label="Sección principal">
+      <h1>Construye tu presencia web fácilmente</h1>
+      <p>Una página limpia, elegante y moderna lista para GitHub Pages o tu dominio personalizado.</p>
+      <button class="btn-primary" onclick="alert('Gracias por iniciar')">Comenzar</button>
+    </section>
+    <section id="features" class="container features" role="region" aria-label="Características principales">
+      <article tabindex="0" class="feature-card">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <h2 class="feature-title">Rápido y Ligero</h2>
+        <p class="feature-desc">Carga ultra rápida para brindar la mejor experiencia a tus visitantes.</p>
+      </article>
+      <article tabindex="0" class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🎨</div>
+        <h2 class="feature-title">Diseño Moderno</h2>
+        <p class="feature-desc">Estética limpia y profesional que se adapta perfectamente a tu branding.</p>
+      </article>
+      <article tabindex="0" class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🔒</div>
+        <h2 class="feature-title">Seguro y Confiable</h2>
+        <p class="feature-desc">Protocolos estándar para que tu sitio siempre esté protegido y online.</p>
+      </article>
+    </section>
+    <section id="about" class="container" style="margin-top: 5rem; max-width: 800px;">
+      <h2 style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">Acerca de esta página</h2>
+      <p style="color: var(--color-text); font-size: 1rem; line-height: 1.5;">
+        Esta es una página web temporal diseñada para demostrar una presencia limpia y profesional usando estándares web modernos y accesibilidad. Puedes usarla fácilmente en GitHub Pages y luego trasladarla a tu dominio propio.
+      </p>
+    </section>
+    <section id="contact" class="container" style="margin-top: 5rem; max-width: 600px;">
+      <h2 style="font-weight: 700; color: var(--color-primary); margin-bottom: 1rem;">Contacto</h2>
+      <p style="color: var(--color-text); font-size: 1rem; line-height: 1.5;">
+        Para más información o preguntas, puedes contactarme a través de las redes sociales o correo electrónico.
+      </p>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 MiSitio. Todos los derechos reservados.
+  </footer>
 </body>
 </html>
+
