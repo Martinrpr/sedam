@@ -1,40 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SEDAM</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>SEDAM - Bienvenidos</title>
+  <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-  <header>
-    <h1>SEDAM</h1>
-    <p>Servicio Digital para Adultos Mayores</p>
-  </header>
+  <h1>📱 Bienvenidos a SEDAM</h1>
+  <p class="intro">
+    Aprende a usar tu celular, comunicarte por WhatsApp, hacer videollamadas, navegar en internet, realizar trámites y mucho más.
+  </p>
 
-  <main>
-    <section class="menu">
-      <button onclick="goTo('celulares')">Uso de Celulares</button>
-      <button onclick="goTo('whatsapp')">WhatsApp</button>
-      <button onclick="goTo('correo')">Correo Electrónico</button>
-      <button onclick="goTo('videollamadas')">Videollamadas</button>
-      <button onclick="goTo('redes')">Redes Sociales</button>
-      <button onclick="goTo('tramites')">Trámites Digitales</button>
-      <button onclick="goTo('servicios')">Servicios Públicos</button>
-      <button onclick="goTo('seguridad')">Navegar con Seguridad</button>
-      <button onclick="goTo('comunicacion')">Comunicación Efectiva</button>
-      <button onclick="goTo('faq')">Preguntas Frecuentes</button>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 SEDAM - Proyecto de Innovación Social</p>
-  </footer>
-
-  <script>
-    function goTo(seccion) {
-      alert("Esta sección aún está en desarrollo: " + seccion);
-    }
-  </script>
+  <div class="botones">
+    <button onclick="location.href='celulares.html'">📲 Uso de Celulares</button>
+    <button onclick="location.href='whatsapp.html'">💬 WhatsApp</button>
+    <button onclick="location.href='correo.html'">✉️ Correo Electrónico</button>
+    <button onclick="location.href='videollamadas.html'">🎥 Videollamadas</button>
+    <button onclick="location.href='tramites.html'">📝 Trámites Digitales</button>
+    <button onclick="location.href='seguridad.html'">🔒 Seguridad en Internet</button>
+    <button onclick="location.href='faq.html'">❓ Preguntas Frecuentes</button>
+  </div>
 </body>
 </html>
