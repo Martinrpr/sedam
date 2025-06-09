@@ -23,6 +23,8 @@
       --btn-height: 4.5rem;
       --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
       --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
+      --emergency-btn-size: 56px;
+      --emergency-btn-z-index: 10000;
     }
 
     *, *::before, *::after {
@@ -40,6 +42,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
     a {
       color: inherit;
@@ -106,9 +109,9 @@
       margin: 0 auto;
       padding-left: 1rem;
       padding-right: 1rem;
+      text-align: center;
     }
     .hero {
-      text-align: center;
       margin-bottom: 5rem;
     }
     .hero h1 {
@@ -125,26 +128,6 @@
       max-width: 640px;
       margin: 0 auto;
       user-select: text;
-    }
-    .btn-primary {
-      font-weight: 700;
-      font-size: 1.5rem;
-      background-color: var(--color-primary);
-      color: white;
-      padding: 1rem 3rem;
-      border-radius: var(--border-radius);
-      border: none;
-      cursor: pointer;
-      box-shadow: var(--shadow-base);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      margin-top: 2rem;
-      user-select: none;
-    }
-    .btn-primary:hover,
-    .btn-primary:focus-visible {
-      background-color: var(--color-primary-hover);
-      outline: none;
-      transform: scale(1.05);
     }
     .content-grid {
       display: grid;
@@ -278,6 +261,40 @@
       outline: none;
     }
 
+    /* Botón emergente de emergencia (alarma roja) */
+    #btn-emergencia {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 56px;
+      height: 56px;
+      background-color: #dc2626; /* rojo alarmante */
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.6);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    #btn-emergencia:hover, #btn-emergencia:focus-visible {
+      background-color: #b91c1c;
+      outline: none;
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(185, 28, 28, 0.8);
+    }
+    #btn-emergencia svg {
+      width: 50px;
+      height: 50px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
   </style>
 </head>
 <body>
@@ -297,7 +314,6 @@
     <section id="inicio" class="hero" role="region" aria-label="Introducción">
       <h1>El Sitio de los Adultos Mayores</h1>
       <p>Aprende y accede fácilmente a contenidos digitales con botones grandes y colores claros pensados para ti.</p>
-      <button class="btn-primary" onclick="location.href='contactos-emergencia.html'">Contactos de Emergencia</button>
     </section>
     <section class="content-grid" role="region" aria-label="Contenidos principales">
       <article class="content-card bg-1" tabindex="0" role="button" aria-pressed="false" onclick="location.href='capsulas.html'">
@@ -359,6 +375,14 @@
 
   <button id="btn-aumentar-texto" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto" onclick="aumentarTexto()">A+</button>
 
+  <button id="btn-emergencia" aria-label="Contactos de emergencia" title="Contactos de emergencia" onclick="location.href='contactos-emergencia.html'">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+      <path d="M12 8v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="16" r="1" fill="white"/>
+    </svg>
+  </button>
+
   <script>
     function aumentarTexto() {
       const body = document.body;
@@ -369,8 +393,5 @@
     }
   </script>
 
-  <footer>
-    &copy; 2024 SEDAM. Todos los derechos reservados.
-  </footer>
 </body>
 </html>
