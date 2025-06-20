@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preguntas Frecuentes - SEDAM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text-base: #6b7280;
+            --color-text-dark: #111827;
+            --color-primary: #2563eb;
+            --color-primary-hover: #1e40af;
+            --border-radius: 0.75rem;
+            --spacing-vertical: 4rem;
+            --font-family: 'Poppins', Arial, sans-serif;
+            --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
+            --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
+            --max-width: 900px;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-base);
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 2rem 1rem 4rem 1rem;
+            line-height: 1.6;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--color-bg);
+            padding: 1rem 0;
+            z-index: 100;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header .logo {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.75rem;
+            user-select: none;
+            letter-spacing: 0.05em;
+        }
+        nav a {
+            color: var(--color-text-base);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a:focus-visible {
+            color: var(--color-primary);
+            outline: none;
+        }
+        main h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            color: var(--color-text-dark);
+            margin: 2rem 0 1rem 0;
+            text-align: center;
+        }
+        main p.intro {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            color: var(--color-text-base);
+            text-align: center;
+        }
+        .faq-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #f9fafb;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-base);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow-hover);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        .faq-question:hover {
+            color: var(--color-primary);
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active::after {
+            content: '-';
+            transform: rotate(180deg); /* Opcional: animar el signo */
+        }
+        .faq-answer {
+            padding: 0 1.5rem 1.25rem 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-text-base);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .faq-answer p {
+            margin: 0; /* Eliminar margen predeterminado del párrafo */
+        }
+        .faq-answer.open {
+            max-height: 300px; /* Suficientemente grande para la mayoría de respuestas */
+            padding: 0 1.5rem 1.25rem 1.5rem; /* Ajustar padding cuando está abierto */
+        }
+        footer {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            padding: 2rem 0 1rem 0;
+            margin-top: auto;
+            user-select: none;
+        }
+        @media (max-width: 480px) {
+            main h1 {
+                font-size: 2.25rem;
+            }
+            .faq-question {
+                font-size: 1.1rem;
+                padding: 1rem 1.25rem;
+            }
+            .faq-answer {
+                font-size: 1rem;
+                padding: 0 1.25rem 1rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner" aria-label="Cabecera del sitio">
+        <div class="logo">SEDAM</div>
+        <nav role="navigation" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="quienes-somos.html">Quiénes Somos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    <main role="main">
+        <h1>Preguntas Frecuentes</h1>
+        <p class="intro">Encuentra respuestas a las dudas más comunes sobre el uso de la plataforma SEDAM y la tecnología en general.</p>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                    ¿Qué es SEDAM y para quién está diseñado?
+                </button>
+                <div class="faq-answer" id="faq-answer-1">
+                    <p>SEDAM es una plataforma educativa diseñada para **adultos mayores** que desean aprender a usar la tecnología, como celulares, aplicaciones básicas y trámites digitales, de una forma **sencilla, segura y a su propio ritmo**.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                    ¿Necesito tener conocimientos previos de tecnología para usar SEDAM?
+                </button>
+                <div class="faq-answer" id="faq-answer-2">
+                    <p>¡Para nada! SEDAM está creado pensando en quienes tienen **poca o ninguna experiencia previa** con la tecnología. Nuestros tutoriales son paso a paso y usamos un lenguaje claro para que cualquiera pueda aprender.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                    ¿Qué tipo de contenidos puedo encontrar en SEDAM?
+                </button>
+                <div class="faq-answer" id="faq-answer-3">
+                    <p>Actualmente, ofrecemos guías sobre el **uso básico de celulares**, **aplicaciones comunes** (como WhatsApp, correo electrónico y videollamadas) y **trámites digitales esenciales** (como pedir horas médicas o certificados). ¡Estamos trabajando para añadir más contenido continuamente!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                    ¿SEDAM es gratuito?
+                </button>
+                <div class="faq-answer" id="faq-answer-4">
+                    <p>Sí, el acceso a todos los contenidos educativos de SEDAM es **completamente gratuito**. Nuestro objetivo es promover la inclusión digital sin barreras económicas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+                    ¿Cómo puedo contactar a SEDAM si tengo una duda o sugerencia?
+                </button>
+                <div class="faq-answer" id="faq-answer-5">
+                    <p>Puedes escribirnos directamente a nuestro correo electrónico: **sedam.contacto@gmail.com**. También puedes usar el formulario de contacto en nuestra sección de **Contacto**. ¡Estaremos encantados de ayudarte!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">
+                    ¿Es seguro seguir los tutoriales de trámites digitales?
+                </button>
+                <div class="faq-answer" id="faq-answer-6">
+                    <p>Absolutamente. Nuestros tutoriales se basan en los **sitios web oficiales** de cada institución (por ejemplo, Registro Civil, Fonasa, ChileAtiende). Siempre te recomendamos verificar que estás en una página web oficial antes de ingresar cualquier dato personal.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">
+                    ¿Puedo ajustar el tamaño del texto en la página?
+                </button>
+                <div class="faq-answer" id="faq-answer-7">
+                    <p>¡Sí! En la esquina inferior derecha de cada página, encontrarás los botones **"A+" para aumentar el tamaño del texto** y **"A-" para disminuirlo**. Esto está pensado para tu comodidad visual.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer role="contentinfo">
+        &copy; 2024 SEDAM. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const isOpen = button.classList.contains('active');
+
+                // Close all other open answers
+                document.querySelectorAll('.faq-question.active').forEach(activeButton => {
+                    if (activeButton !== button) {
+                        activeButton.classList.remove('active');
+                        activeButton.setAttribute('aria-expanded', 'false');
+                        activeButton.nextElementSibling.classList.remove('open');
+                        activeButton.nextElementSibling.style.maxHeight = '0';
+                    }
+                });
+
+                // Toggle current answer
+                if (isOpen) {
+                    button.classList.remove('active');
+                    button.setAttribute('aria-expanded', 'false');
+                    answer.classList.remove('open');
+                    answer.style.maxHeight = '0';
+                } else {
+                    button.classList.add('active');
+                    button.setAttribute('aria-expanded', 'true');
+                    answer.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px'; // Set height dynamically
+                }
+            });
+        });
+    </script>
+</body>
+</html>
