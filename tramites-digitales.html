@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trámites Digitales - SEDAM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text-base: #6b7280;
+            --color-text-dark: #111827;
+            --color-primary: #2563eb;
+            --color-primary-hover: #1e40af;
+            --border-radius: 0.75rem;
+            --spacing-vertical: 4rem;
+            --font-family: 'Poppins', Arial, sans-serif;
+            --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
+            --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
+            --max-width: 900px;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-base);
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 2rem 1rem 4rem 1rem;
+            line-height: 1.6;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--color-bg);
+            padding: 1rem 0;
+            z-index: 100;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header .logo {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.75rem;
+            user-select: none;
+            letter-spacing: 0.05em;
+        }
+        nav a {
+            color: var(--color-text-base);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a:focus-visible {
+            color: var(--color-primary);
+            outline: none;
+        }
+        main h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            color: var(--color-text-dark);
+            margin: 2rem 0 1rem 0;
+            text-align: center;
+        }
+        main p.intro {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            color: var(--color-text-base);
+            text-align: center;
+        }
+        section.tramite-card {
+            background: #f9fafb;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-base);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+        section.tramite-card h2 {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+        section.tramite-card p {
+            font-size: 1.125rem;
+            color: var(--color-text-base);
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .tramite-steps ol {
+            list-style: decimal;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        .tramite-steps ol li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            color: var(--color-text-dark);
+        }
+        .tramite-steps ol li strong {
+            color: var(--color-primary);
+        }
+        .tramite-steps img, .tramite-steps video {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+            display: block; /* Asegura que la imagen/video ocupe su propia línea */
+        }
+        footer {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            padding: 2rem 0 1rem 0;
+            margin-top: auto;
+            user-select: none;
+        }
+        @media (max-width: 480px) {
+            main h1 {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner" aria-label="Cabecera del sitio">
+        <div class="logo">SEDAM</div>
+        <nav role="navigation" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="quienes-somos.html">Quiénes Somos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    <main role="main">
+        <h1>Guías para Trámites Digitales</h1>
+        <p class="intro">Aquí encontrarás tutoriales paso a paso para realizar tus trámites más comunes de forma segura y sencilla desde tu dispositivo.</p>
+
+        <section class="tramite-card" role="region" aria-label="Cómo sacar hora en el consultorio o CESFAM">
+            <h2>1. Sacar hora en el consultorio o CESFAM</h2>
+            <p>Aprende a agendar tu cita médica de forma online, sin filas ni esperas.</p>
+            <div class="tramite-steps">
+                <ol>
+                    <li>
+                        <strong>Paso 1: Accede al portal de tu CESFAM.</strong> Ingresa a la página web de tu centro de salud. (Puedes insertar una imagen aquí si quieres)
+                        </li>
+                    <li>
+                        <strong>Paso 2: Busca la opción "Agendar Hora".</strong> Usualmente se encuentra en la página principal o en un menú de servicios.
+                    </li>
+                    <li>
+                        <strong>Paso 3: Ingresa tus datos.</strong> Te pedirán tu RUT y fecha de nacimiento para verificar tu identidad.
+                    </li>
+                    <li>
+                        <strong>Paso 4: Selecciona la especialidad y hora.</strong> Elige el tipo de atención que necesitas y la fecha y hora disponibles.
+                    </li>
+                    <li>
+                        <strong>Paso 5: Confirma tu reserva.</strong> Revisa los datos y confirma tu hora. Recibirás un comprobante.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="tramite-card" role="region" aria-label="Cómo solicitar Pensión Básica Solidaria o PGU">
+            <h2>2. Solicitar Pensión Básica Solidaria o PGU</h2>
+            <p>Guía para iniciar el trámite de solicitud de la Pensión Garantizada Universal (PGU) o Pensión Básica Solidaria.</p>
+            <div class="tramite-steps">
+                <ol>
+                    <li>
+                        <strong>Paso 1: Visita el sitio web del IPS o ChileAtiende.</strong> Ingresa a <a href="https://www.chileatiende.gob.cl" target="_blank">ChileAtiende.gob.cl</a> o al portal del IPS.
+                    </li>
+                    <li>
+                        <strong>Paso 2: Busca la sección de PGU/PBS.</strong> En el menú, busca "Pensión Garantizada Universal" o "Beneficios".
+                    </li>
+                    <li>
+                        <strong>Paso 3: Revisa los requisitos.</strong> Asegúrate de cumplir con todas las condiciones para solicitar el beneficio.
+                    </li>
+                    <li>
+                        <strong>Paso 4: Inicia la solicitud.</strong> Haz clic en "Solicitar" y sigue las instrucciones para llenar el formulario online.
+                    </li>
+                    <li>
+                        <strong>Paso 5: Adjunta documentos (si se solicitan).</strong> Si es necesario, sube los archivos de tus documentos requeridos.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="tramite-card" role="region" aria-label="Cómo ver y descargar bonos Fonasa">
+            <h2>3. Ver y descargar bonos Fonasa</h2>
+            <p>Aprende a consultar y obtener tus bonos de atención de salud Fonasa de manera digital.</p>
+            <div class="tramite-steps">
+                <ol>
+                    <li>
+                        <strong>Paso 1: Accede al sitio web de Fonasa.</strong> Ingresa a <a href="https://www.fonasa.cl" target="_blank">Fonasa.cl</a>.
+                    </li>
+                    <li>
+                        <strong>Paso 2: Inicia sesión con Clave Única.</strong> Es la forma más segura de acceder a tus datos de salud.
+                    </li>
+                    <li>
+                        <strong>Paso 3: Busca la opción "Comprar Bono".</strong> Dentro de tu perfil, encontrarás la opción para buscar y comprar bonos.
+                    </li>
+                    <li>
+                        <strong>Paso 4: Selecciona el tipo de prestación.</strong> Elige el médico o centro de salud y la prestación que necesitas.
+                    </li>
+                    <li>
+                        <strong>Paso 5: Paga y descarga el bono.</strong> Completa el pago online y podrás descargar tu bono para presentarlo.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="tramite-card" role="region" aria-label="Cómo pedir certificado de nacimiento y antecedentes en el Registro Civil">
+            <h2>4. Pedir certificado de nacimiento y antecedentes en el Registro Civil</h2>
+            <p>Consigue tus certificados más importantes de forma online y sin costo en muchos casos.</p>
+            <div class="tramite-steps">
+                <ol>
+                    <li>
+                        <strong>Paso 1: Visita el sitio web del Registro Civil.</strong> Ingresa a <a href="https://www.registrocivil.cl" target="_blank">RegistroCivil.cl</a>.
+                    </li>
+                    <li>
+                        <strong>Paso 2: Dirígete a la sección de certificados.</strong> Busca "Certificados en Línea".
+                    </li>
+                    <li>
+                        <strong>Paso 3: Elige el certificado deseado.</strong> Selecciona "Certificado de Nacimiento" o "Certificado de Antecedentes para fines especiales".
+                    </li>
+                    <li>
+                        <strong>Paso 4: Ingresa tus datos.</strong> Completa los datos solicitados y valida tu identidad.
+                    </li>
+                    <li>
+                        <strong>Paso 5: Descarga tu certificado.</strong> Una vez procesado, podrás descargar el documento en formato PDF.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="tramite-card" role="region" aria-label="Cómo revisar el estado del Registro Social de Hogares">
+            <h2>5. Revisar el estado del Registro Social de Hogares</h2>
+            <p>Consulta la información de tu hogar en el Registro Social de Hogares para acceder a beneficios estatales.</p>
+            <div class="tramite-steps">
+                <ol>
+                    <li>
+                        <strong>Paso 1: Accede al portal del Registro Social de Hogares.</strong> Ve a <a href="https://rsh.ministeriodesarrollosocial.gob.cl/" target="_blank">rsh.ministeriodesarrollosocial.gob.cl</a>.
+                    </li>
+                    <li>
+                        <strong>Paso 2: Inicia sesión con Clave Única.</strong> Esta es la forma más segura de ingresar.
+                    </li>
+                    <li>
+                        <strong>Paso 3: Consulta tu registro.</strong> Una vez dentro, podrás ver toda la información de tu hogar, incluyendo tu porcentaje.
+                    </li>
+                    <li>
+                        <strong>Paso 4: Solicita actualización (si es necesario).</strong> Si tus datos han cambiado, puedes iniciar el proceso de actualización aquí mismo.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="tramite-card" role="region" aria-label="Cómo pedir hora para renovar cédula de identidad">
+            <h2>6. Pedir hora para renovar cédula de identidad</h2>
+            <p>Agenda tu cita para renovar tu cédula de identidad de forma rápida y sencilla en el Registro Civil.</p>
+            <div class="tramite-steps">
+                <ol>
+                    <li>
+                        <strong>Paso 1: Ingresa al sitio web del Registro Civil.</strong> Visita <a href="https://www.registrocivil.cl" target="_blank">RegistroCivil.cl</a>.
+                    </li>
+                    <li>
+                        <strong>Paso 2: Busca la opción "Servicios en Línea".</strong> Luego "Reserva de Horas" o similar.
+                    </li>
+                    <li>
+                        <strong>Paso 3: Selecciona "Cédula de Identidad".</strong> Elige el tipo de trámite que deseas realizar.
+                    </li>
+                    <li>
+                        <strong>Paso 4: Ingresa tus datos y selecciona oficina.</strong> Completa tu RUT y selecciona la oficina y la fecha disponible.
+                    </li>
+                    <li>
+                        <strong>Paso 5: Confirma tu hora.</strong> Revisa los datos y guarda el comprobante de tu reserva.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+    </main>
+    <footer role="contentinfo">
+        &copy; 2024 SEDAM. Todos los derechos reservados.
+    </footer>
+</body>
+</html>
