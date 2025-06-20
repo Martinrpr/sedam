@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiénes Somos - SEDAM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text-base: #6b7280;
+            --color-text-dark: #111827;
+            --color-primary: #2563eb;
+            --color-primary-hover: #1e40af;
+            --border-radius: 0.75rem;
+            --spacing-vertical: 4rem;
+            --font-family: 'Poppins', Arial, sans-serif;
+            --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
+            --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
+            --max-width: 900px;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            background-color: var(--color-bg);
+            color: var(--color-text-base);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 4rem;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: var(--color-bg);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: var(--max-width);
+            padding: 1rem;
+            margin-bottom: 3rem;
+            user-select: none;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--color-primary);
+            letter-spacing: 0.05em;
+        }
+        nav a {
+            color: var(--color-text-base);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--color-primary);
+            outline: none;
+        }
+        main {
+            max-width: var(--max-width);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center; /* Alinea el texto al centro */
+        }
+        main h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            color: var(--color-text-dark);
+            margin-bottom: 1rem;
+            user-select: text;
+        }
+        main p {
+            font-size: 1.25rem;
+            color: var(--color-text-base);
+            margin-bottom: 1rem;
+            user-select: text;
+            max-width: 700px; /* Ancho máximo para el párrafo */
+            margin-left: auto; /* Centrar el párrafo */
+            margin-right: auto; /* Centrar el párrafo */
+        }
+        footer {
+            margin-top: auto; /* Empuja el footer al final de la página */
+            padding-top: 4rem;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-align: center;
+            user-select: none;
+        }
+        @media (max-width: 700px) {
+            main h1 {
+                font-size: 2.5rem;
+            }
+            nav a {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header role="banner" aria-label="Cabecera del sitio">
+        <div class="logo">SEDAM</div>
+        <nav role="navigation" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="quienes-somos.html">Quiénes Somos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    <main role="main">
+        <h1>Quiénes Somos</h1>
+        <p>Somos un equipo comprometido con la **inclusión digital de personas adultas mayores**. Creemos que la tecnología debe estar al alcance de todos, por eso desarrollamos SEDAM: un espacio educativo **accesible, claro y seguro** para aprender a usar el celular, aplicaciones básicas y servicios digitales. Este proyecto nace desde la **observación directa de sus necesidades**, con contenidos diseñados paso a paso, a su ritmo.</p>
+    </main>
+    <footer role="contentinfo">
+        &copy; 2024 SEDAM. Todos los derechos reservados.
+    </footer>
+</body>
+</html>
