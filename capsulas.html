@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cápsulas sobre Uso de Celulares - SEDAM</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
 <style>
   :root {
     --color-bg: #ffffff;
@@ -54,7 +54,6 @@
     margin-right: auto;
     position: relative; /* Necesario para los botones fijos */
   }
-    /* Ajuste de header para el layout original */
   header {
     position: sticky;
     top: 0;
@@ -62,10 +61,15 @@
     padding: 1rem 0;
     z-index: 100;
     border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Espacio entre logo y nav */
+    /* Quita display: flex, align-items, justify-content de aquí */
   }
+    /* Nuevo estilo para la navegación dentro del header */
+    header nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%; /* Asegura que ocupe todo el espacio del header */
+    }
   header .logo {
     color: var(--color-primary);
     font-weight: 700;
@@ -86,16 +90,14 @@
   }
   main h1 {
     font-weight: 700;
-    font-size: calc(3rem * var(--text-scale-factor)); /* Ajuste de fuente */
+    font-size: 3rem;
     color: var(--color-text-dark);
     margin: 2rem 0 1rem 0;
-    text-align: center;
   }
   main p.intro {
-    font-size: calc(1.25rem * var(--text-scale-factor)); /* Ajuste de fuente */
+    font-size: 1.25rem;
     margin-bottom: 3rem;
     color: var(--color-text-base);
-    text-align: center;
   }
   section.capsula {
     background: #f9fafb;
@@ -106,12 +108,12 @@
   }
   section.capsula h2 {
     font-weight: 700;
-    font-size: calc(1.75rem * var(--text-scale-factor)); /* Ajuste de fuente */
+    font-size: 1.75rem;
     color: var(--color-primary);
     margin-bottom: 0.75rem;
   }
   section.capsula p {
-    font-size: calc(1.125rem * var(--text-scale-factor)); /* Ajuste de fuente */
+    font-size: 1.125rem;
     color: var(--color-text-base);
     margin-bottom: 1rem;
   }
@@ -126,14 +128,19 @@
     font-size: 0.875rem;
     color: #9ca3af;
     padding: 2rem 0 1rem 0;
-    margin-top: auto; /* Empuja el footer al final de la página */
+    margin-top: auto;
     user-select: none;
+  }
+  @media (max-width: 480px) {
+    main h1 {
+      font-size: 2.25rem;
+    }
   }
 
     /* Estilos para botones de ajuste de texto */
     .text-adjust-buttons {
         position: fixed;
-        bottom: 1.5rem; /* Ajustar posición para que no se superponga */
+        bottom: 1.5rem;
         right: 1.5rem;
         display: flex;
         flex-direction: column;
@@ -231,33 +238,17 @@
         visibility: hidden;
         pointer-events: none;
     }
-
-    @media (max-width: 480px) {
-      main h1 {
-        font-size: calc(2.25rem * var(--text-scale-factor)); /* Ajuste de fuente */
-      }
-    /* Ajuste para el header en móvil */
-    header {
-        flex-direction: column;
-        padding: 1rem;
-        text-align: center;
-    }
-    .nav-links {
-        margin-top: 1rem;
-    }
-    .nav-links a {
-        margin: 0 0.75rem; /* Ajuste para espacio entre links */
-    }
-    }
 </style>
 </head>
 <body>
   <header role="banner" aria-label="Cabecera del sitio">
-    <div class="logo">SEDAM</div>
-    <nav role="navigation" aria-label="Navegación principal">
-      <a href="index.html" tabindex="0">Inicio</a>
-      <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
-      <a href="contacto.html" tabindex="0">Contacto</a>
+    <nav aria-label="Navegación principal">
+      <div class="logo">SEDAM</div>
+      <div class="nav-links">
+        <a href="index.html" tabindex="0">Inicio</a>
+        <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
+        <a href="contacto.html" tabindex="0">Contacto</a>
+      </div>
     </nav>
   </header>
   <main role="main">
