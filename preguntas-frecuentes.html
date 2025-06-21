@@ -18,6 +18,22 @@
             --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
             --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
             --max-width: 900px;
+
+            /* Nuevas variables para tamaños de texto */
+            --text-scale-factor: 1; /* Factor de escala inicial */
+            --base-font-size: 18px; /* Tamaño base para el body */
+
+            /* Variables para botón de emergencia */
+            --emergency-btn-size: 80px;
+            --emergency-btn-z-index: 11000;
+            --tooltip-font-size: 1rem;
+            --tooltip-color: #dc2626;
+            --tooltip-font-weight: 700;
+            --tooltip-text-transform: uppercase;
+            --tooltip-padding: 8px 14px;
+            --tooltip-border-radius: 6px;
+            --tooltip-gap: 10px;
+            --color-emergency-red: #dc2626; /* Definir aquí si no está */
         }
         *, *::before, *::after {
             box-sizing: border-box;
@@ -29,7 +45,8 @@
             margin: 0;
             padding: 2rem 1rem 4rem 1rem;
             line-height: 1.6;
-            font-size: 18px;
+            /* Usamos calc() para que el tamaño de fuente sea adaptable */
+            font-size: calc(var(--base-font-size) * var(--text-scale-factor));
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             min-height: 100vh;
@@ -38,6 +55,7 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            position: relative; /* Necesario para los botones fijos */
         }
         header {
             position: sticky;
@@ -70,13 +88,13 @@
         }
         main h1 {
             font-weight: 700;
-            font-size: 3rem;
+            font-size: calc(3rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
             color: var(--color-text-dark);
             margin: 2rem 0 1rem 0;
             text-align: center;
         }
         main p.intro {
-            font-size: 1.25rem;
+            font-size: calc(1.25rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
             margin-bottom: 3rem;
             color: var(--color-text-base);
             text-align: center;
@@ -102,7 +120,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.25rem 1.5rem;
-            font-size: 1.25rem;
+            font-size: calc(1.25rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
             font-weight: 600;
             color: var(--color-text-dark);
             cursor: pointer;
@@ -126,7 +144,7 @@
         }
         .faq-answer {
             padding: 0 1.5rem 1.25rem 1.5rem;
-            font-size: 1.1rem;
+            font-size: calc(1.1rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
             color: var(--color-text-base);
             max-height: 0;
             overflow: hidden;
@@ -147,16 +165,117 @@
             margin-top: auto;
             user-select: none;
         }
+        /* Botones para ajustar texto */
+        .text-adjust-buttons {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column; /* Apilar verticalmente */
+            gap: 0.5rem; /* Espacio entre botones */
+            z-index: 1001;
+        }
+
+        .text-adjust-buttons button {
+            font-size: 1.5rem;
+            padding: 0.75rem 1rem; /* Ajustar padding para mejor visualización */
+            border-radius: 1rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            user-select: none;
+            box-shadow: 0 4px 8px rgb(37 99 235 / 0.5);
+            transition: background-color 0.3s ease;
+            width: 70px; /* Ancho fijo para los botones */
+            height: 70px; /* Alto fijo para los botones */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800; /* Hace el texto más grueso */
+        }
+        .text-adjust-buttons button:hover, .text-adjust-buttons button:focus-visible {
+            background: var(--color-primary-hover);
+            outline: none;
+        }
+
+        /* Botón emergente de emergencia (alarma roja) */
+        #btn-emergencia {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            width: var(--emergency-btn-size);
+            height: var(--emergency-btn-size);
+            background-color: var(--color-emergency-red);
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.6);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--emergency-btn-z-index);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            user-select: none;
+        }
+        #btn-emergencia:hover, #btn-emergencia:focus-visible {
+            background-color: #b91c1c;
+            outline: none;
+            transform: scale(1.15);
+            box-shadow: 0 6px 16px rgba(185, 28, 28, 0.8);
+        }
+        #btn-emergencia svg {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+        }
+        /* Tooltip on hover to right */
+        #btn-emergencia:hover::after,
+        #btn-emergencia:focus-visible::after {
+            content: attr(title);
+            position: absolute;
+            top: 50%;
+            left: calc(var(--emergency-btn-size) + 10px);
+            transform: translateY(-50%);
+            background: var(--color-emergency-red);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: var(--tooltip-font-size);
+            font-weight: var(--tooltip-font-weight);
+            letter-spacing: 0.1em;
+            text-transform: var(--tooltip-text-transform);
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 10002;
+            transition: opacity 0.3s ease;
+            user-select: none;
+            max-width: 300px;
+        }
+        #btn-emergencia::after {
+            content: '';
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
         @media (max-width: 480px) {
             main h1 {
-                font-size: 2.25rem;
+                font-size: calc(2.25rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
             }
             .faq-question {
-                font-size: 1.1rem;
+                font-size: calc(1.1rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
                 padding: 1rem 1.25rem;
             }
             .faq-answer {
-                font-size: 1rem;
+                font-size: calc(1rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
                 padding: 0 1.25rem 1rem 1.25rem;
             }
         }
@@ -245,36 +364,41 @@
         &copy; 2024 SEDAM. Todos los derechos reservados.
     </footer>
 
+    <div class="text-adjust-buttons">
+        <button id="btn-aumentar-texto" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto" onclick="adjustTextSize(1)"><span>A+</span></button>
+        <button id="btn-disminuir-texto" aria-label="Disminuir tamaño de texto" title="Disminuir tamaño de texto" onclick="adjustTextSize(-1)"><span>A-</span></button>
+    </div>
+
+    <button id="btn-emergencia" aria-label="Contactos de emergencia" title="Contactos de emergencia" onclick="location.href='contactos-emergencia.html'">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+            <path d="M12 8v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="1" fill="white"/>
+        </svg>
+    </button>
+
     <script>
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                const isOpen = button.classList.contains('active');
+        const root = document.documentElement;
+        // Intentar obtener el valor del CSS o establecer un valor predeterminado
+        let textScaleFactor = parseFloat(getComputedStyle(root).getPropertyValue('--text-scale-factor').trim()) || 1;
+        const scaleStep = 0.1; // Incremento/decremento de escala
+        const minScaleFactor = 0.8; // Escala mínima
+        const maxScaleFactor = 1.5; // Escala máxima
 
-                // Close all other open answers
-                document.querySelectorAll('.faq-question.active').forEach(activeButton => {
-                    if (activeButton !== button) {
-                        activeButton.classList.remove('active');
-                        activeButton.setAttribute('aria-expanded', 'false');
-                        activeButton.nextElementSibling.classList.remove('open');
-                        activeButton.nextElementSibling.style.maxHeight = '0';
-                    }
-                });
+        function adjustTextSize(direction) { // direction: 1 para aumentar, -1 para disminuir
+            let newScaleFactor = textScaleFactor + (direction * scaleStep);
 
-                // Toggle current answer
-                if (isOpen) {
-                    button.classList.remove('active');
-                    button.setAttribute('aria-expanded', 'false');
-                    answer.classList.remove('open');
-                    answer.style.maxHeight = '0';
-                } else {
-                    button.classList.add('active');
-                    button.setAttribute('aria-expanded', 'true');
-                    answer.classList.add('open');
-                    answer.style.maxHeight = answer.scrollHeight + 'px'; // Set height dynamically
-                }
-            });
-        });
+            // Asegurarse de que el factor de escala esté dentro de los límites
+            if (newScaleFactor > maxScaleFactor) {
+                newScaleFactor = maxScaleFactor;
+            } else if (newScaleFactor < minScaleFactor) {
+                newScaleFactor = minScaleFactor;
+            }
+
+            // Actualizar la variable CSS
+            root.style.setProperty('--text-scale-factor', newScaleFactor);
+            textScaleFactor = newScaleFactor; // Actualizar la variable JS
+        }
     </script>
 </body>
 </html>
