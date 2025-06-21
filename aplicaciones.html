@@ -52,27 +52,22 @@
       padding: 2rem 1rem 4rem;
       position: relative; /* Necesario para los botones fijos */
     }
-    /* Ajustes para el header para que mantenga el formato original */
-    header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: var(--color-bg);
-      border-bottom: 1px solid #e5e7eb;
-      z-index: 100;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
-      /* Estas propiedades se mueven a header nav */
-      max-width: var(--max-width);
-      padding: 1rem;
-      margin-bottom: 3rem;
-      user-select: none;
-    }
-    /* Nuevo estilo: Aplicar flexbox a la nav dentro del header */
-    header nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%; /* Asegura que la nav ocupe todo el ancho disponible en el header */
+    /* Volviendo al estilo original del header */
+    header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background: var(--color-bg);
+        border-bottom: 1px solid #e5e7eb;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+        max-width: var(--max-width);
+        padding: 1rem;
+        margin-bottom: 3rem;
+        user-select: none;
+        display: flex; /* Añadido de nuevo aquí para el formato original */
+        align-items: center; /* Añadido de nuevo aquí para el formato original */
+        justify-content: space-between; /* Añadido de nuevo aquí para el formato original */
     }
     .logo {
       font-weight: 700;
@@ -280,13 +275,11 @@
 </head>
 <body>
   <header role="banner" aria-label="Cabecera del sitio">
+    <div class="logo">SEDAM</div>
     <nav aria-label="Navegación principal">
-      <div class="logo">SEDAM</div>
-      <div class="nav-links">
-        <a href="index.html" tabindex="0">Inicio</a>
-        <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
-        <a href="contacto.html" tabindex="0">Contacto</a>
-      </div>
+      <a href="index.html" tabindex="0">Inicio</a>
+      <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
+      <a href="contacto.html" tabindex="0">Contacto</a>
     </nav>
   </header>
   <main role="main">
