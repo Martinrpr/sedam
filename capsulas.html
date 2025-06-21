@@ -34,6 +34,13 @@
             --tooltip-border-radius: 8px;
             --tooltip-gap: 15px;
             --color-emergency-red: #dc2626;
+
+            /* Variables para el fondo con círculos */
+            --circle-color-1: rgba(178, 223, 219, 0.4);
+            --circle-color-2: rgba(255, 204, 188, 0.4);
+            --circle-color-3: rgba(197, 225, 243, 0.4);
+            --circle-color-4: rgba(255, 243, 198, 0.4);
+            --circle-color-5: rgba(225, 190, 231, 0.4);
         }
 
         /* Estilos generales del cuerpo y layout */
@@ -57,8 +64,8 @@
             position: relative;
             overflow-x: hidden;
 
-            /* Fondo con círculos fijo igual que en aplicaciones.html */
-            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='150' r='120' fill='rgba(178,223,219,0.4)' opacity='0.3'/%3E%3Ccircle cx='800' cy='50' r='150' fill='rgba(255,204,188,0.4)' opacity='0.3'/%3E%3Ccircle cx='300' cy='450' r='180' fill='rgba(197,225,243,0.4)' opacity='0.3'/%3E%3Ccircle cx='900' cy='700' r='100' fill='rgba(255,243,198,0.4)' opacity='0.3'/%3E%3Ccircle cx='50' cy='850' r='160' fill='rgba(225,190,231,0.4)' opacity='0.3'/%3E%3Ccircle cx='600' cy='250' r='90' fill='rgba(178,223,219,0.4)' opacity='0.2'/%3E%3Ccircle cx='150' cy='600' r='110' fill='rgba(255,204,188,0.4)' opacity='0.2'/%3E%3Ccircle cx='450' cy='900' r='140' fill='rgba(197,225,243,0.4)' opacity='0.2'/%3E%3Ccircle cx='750' cy='400' r='130' fill='rgba(255,243,198,0.4)' opacity='0.2'/%3E%3Ccircle cx='200' cy='30' r='80' fill='rgba(225,190,231,0.4)' opacity='0.2'/%3E%3C/svg%3E");
+            /* Fondo con círculos, consistente con index.html y aplicaciones-basicas.html */
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='150' r='120' fill='%23b2dfdb66' opacity='0.3'/%3E%3Ccircle cx='800' cy='50' r='150' fill='%23ffccbc66' opacity='0.3'/%3E%3Ccircle cx='300' cy='450' r='180' fill='%23c5e1f366' opacity='0.3'/%3E%3Ccircle cx='900' cy='700' r='100' fill='%23fff3c666' opacity='0.3'/%3E%3Ccircle cx='50' cy='850' r='160' fill='%23e1bee766' opacity='0.3'/%3E%3Ccircle cx='600' cy='250' r='90' fill='%23b2dfdb66' opacity='0.2'/%3E%3Ccircle cx='150' cy='600' r='110' fill='%23ffccbc66' opacity='0.2'/%3E%3Ccircle cx='450' cy='900' r='140' fill='%23c5e1f366' opacity='0.2'/%3E%3Ccircle cx='750' cy='400' r='130' fill='%23fff3c666' opacity='0.2'/%3E%3Ccircle cx='200' cy='30' r='80' fill='%23e1bee766' opacity='0.2'/%3E%3C/svg%3E");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -153,7 +160,7 @@
             margin-right: auto;
         }
 
-        /* Estilos para las cápsulas de video */
+        /* Estilos para las cápsulas */
         section.capsula {
             background: #f9fafb;
             border: 1px solid #e5e7eb;
@@ -183,14 +190,13 @@
             color: var(--color-text-base);
             margin-bottom: 1.5rem;
         }
-        section.capsula video {
+        section.capsula iframe {
             width: 100%;
-            height: auto;
+            height: 315px;
             border-radius: var(--border-radius);
-            margin-top: 0.5rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        video:focus-visible {
+        iframe:focus-visible {
             outline: 2px solid var(--color-primary);
             outline-offset: 4px;
         }
@@ -211,8 +217,7 @@
             padding: 0;
         }
 
-
-        /* Botones para ajustar texto - Consistente con index.html y tramites.html */
+        /* Botones para ajustar texto */
         .text-adjust-buttons {
             position: fixed;
             bottom: 1.5rem;
@@ -320,7 +325,7 @@
             pointer-events: none;
         }
 
-        /* Media Queries (Consistente con otras páginas) */
+        /* Media Queries */
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
@@ -417,79 +422,80 @@
         <section class="capsula" role="region" aria-label="Cápsula 1: Cómo encender y apagar el celular">
             <h2>Cómo encender y apagar el celular</h2>
             <p>Aprende paso a paso a encender y apagar tu dispositivo móvil.</p>
-            <iframe width="100%" height="360" 
-                src="https://www.youtube.com/embed/3VxG9mvZ5j8" 
-                title="Cómo encender y apagar el celular" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/fvciMs83I9g" title="Cómo encender y apagar el celular" allowfullscreen></iframe>
         </section>
-
 
         <section class="capsula" role="region" aria-label="Cápsula 2: Uso básico de la pantalla táctil">
             <h2>Uso básico de la pantalla táctil</h2>
             <p>Aprende a deslizar, tocar y usar la pantalla táctil de tu celular.</p>
-            <video controls aria-describedby="desc2" preload="metadata" muted>
-                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
-                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
-                Tu navegador no soporta la etiqueta de video.
-            </video>
-            <p id="desc2" hidden>Video mostrando uso básico de la pantalla táctil.</p>
+            <iframe src="https://www.youtube.com/embed/_VKRF6aHUPI" title="Uso básico de la pantalla táctil" allowfullscreen></iframe>
         </section>
 
         <section class="capsula" role="region" aria-label="Cápsula 3: Cómo hacer llamadas telefónicas">
             <h2>Cómo hacer llamadas telefónicas</h2>
-            <p>Guía para realizar llamadas de voz fácilmente.</p>
-            <video controls aria-describedby="desc3" preload="metadata" muted>
-                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
-                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
-                Tu navegador no soporta la etiqueta de video.
-            </video>
-            <p id="desc3" hidden>Video mostrando cómo hacer llamadas telefónicas.</p>
+            <p>Guía sencilla para realizar llamadas desde tu teléfono móvil.</p>
+            <iframe src="https://www.youtube.com/embed/ct1pp0sPe9k" title="Cómo hacer llamadas telefónicas" allowfullscreen></iframe>
         </section>
 
+        <section class="capsula" role="region" aria-label="Cápsula 4: Configuración básica de WhatsApp">
+            <h2>Configuración básica de WhatsApp</h2>
+            <p>Aprende a configurar tu WhatsApp para mantenerte en contacto con tus seres queridos.</p>
+            <iframe src="https://www.youtube.com/embed/jrujkYObjB8" title="Configuración básica de WhatsApp" allowfullscreen></iframe>
+        </section>
     </main>
 
-    <!-- Botón de emergencia (Llamado rápido) -->
-    <button id="btn-emergencia" title="Llamar a Emergencias" aria-label="Llamar a Emergencias" onclick="window.location.href='tel:131'">
+    <!-- Botones para aumentar/disminuir tamaño del texto -->
+    <div class="text-adjust-buttons" aria-label="Ajustes de tamaño de texto">
+        <button id="btnAumentar" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto">A+</button>
+        <button id="btnDisminuir" aria-label="Disminuir tamaño de texto" title="Disminuir tamaño de texto">A−</button>
+        <button id="btnRestablecer" aria-label="Restablecer tamaño de texto" title="Restablecer tamaño de texto">A</button>
+    </div>
+
+    <!-- Botón de emergencia -->
+    <button id="btn-emergencia" title="Llamar a emergencia" aria-label="Llamar a emergencia" onclick="llamarEmergencia()">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 15h-2v-2h2zm0-4h-2V7h2z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="3" fill="none"/>
+            <line x1="12" y1="6" x2="12" y2="14" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="1" fill="white"/>
         </svg>
     </button>
 
-    <!-- Botones para cambiar tamaño de texto -->
-    <div class="text-adjust-buttons" aria-label="Ajustar tamaño de texto">
-        <button id="btn-increase-text" aria-label="Aumentar tamaño de texto">A+</button>
-        <button id="btn-decrease-text" aria-label="Disminuir tamaño de texto">A−</button>
-        <button id="btn-reset-text" aria-label="Restablecer tamaño de texto">A</button>
-    </div>
-
     <footer role="contentinfo" class="container">
-        <p>© 2025 SEDAM. Todos los derechos reservados.</p>
+        <p>© 2025 SEDAM - Proyecto Innovación Social</p>
     </footer>
 
     <script>
-        // JavaScript para aumentar, disminuir y resetear tamaño de texto
-        const root = document.documentElement;
-        let scale = 1;
+        // Ajuste de tamaño de texto
+        const body = document.body;
+        let scaleFactor = 1;
+        const btnAumentar = document.getElementById('btnAumentar');
+        const btnDisminuir = document.getElementById('btnDisminuir');
+        const btnRestablecer = document.getElementById('btnRestablecer');
 
-        document.getElementById('btn-increase-text').addEventListener('click', () => {
-            if (scale < 2) {
-                scale += 0.1;
-                root.style.setProperty('--text-scale-factor', scale.toFixed(2));
+        btnAumentar.addEventListener('click', () => {
+            if (scaleFactor < 2) {
+                scaleFactor += 0.1;
+                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
             }
         });
-        document.getElementById('btn-decrease-text').addEventListener('click', () => {
-            if (scale > 0.7) {
-                scale -= 0.1;
-                root.style.setProperty('--text-scale-factor', scale.toFixed(2));
+
+        btnDisminuir.addEventListener('click', () => {
+            if (scaleFactor > 0.6) {
+                scaleFactor -= 0.1;
+                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
             }
         });
-        document.getElementById('btn-reset-text').addEventListener('click', () => {
-            scale = 1;
-            root.style.setProperty('--text-scale-factor', scale.toFixed(2));
+
+        btnRestablecer.addEventListener('click', () => {
+            scaleFactor = 1;
+            body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
         });
+
+        // Función para llamar a emergencia (ejemplo, abre el marcador)
+        function llamarEmergencia() {
+            // En un celular, esto abriría el dialer con el número 911 (Chile)
+            window.location.href = "tel:911";
+        }
     </script>
 </body>
 </html>
