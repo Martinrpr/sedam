@@ -42,7 +42,7 @@
       color: var(--color-text-base);
       font-family: var(--font-family);
       line-height: 1.6;
-      font-size: calc(var(--base-font-size) * var(--text-scale-factor)); /* **MODIFICADO AQUÍ PARA ESCALADO** */
+      font-size: calc(var(--base-font-size) * var(--text-scale-factor)); /* MODIFICADO AQUÍ PARA ESCALADO */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
@@ -50,9 +50,10 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem 4rem;
-      position: relative; /* **AÑADIDO: Necesario para los botones fijos** */
+      position: relative; /* AÑADIDO: Necesario para los botones fijos */
     }
     header {
+        /* ESTILOS DEL HEADER EXACTAMENTE COMO EL ORIGINAL */
       position: sticky;
       top: 0;
       width: 100%;
@@ -68,6 +69,18 @@
       margin-bottom: 3rem;
       user-select: none;
     }
+    header nav {
+        /* AÑADIDO: Para que el nav se comporte como flex dentro del header original */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    header .nav-links {
+        /* AÑADIDO: Para que los enlaces de navegación se comporten como flex */
+        display: flex;
+        align-items: center;
+    }
     .logo {
       font-weight: 700;
       font-size: 1.75rem;
@@ -169,7 +182,7 @@
       }
     }
 
-    /* **NUEVOS ESTILOS PARA BOTONES DE ACCESIBILIDAD Y EMERGENCIA** */
+    /* **NUEVOS ESTILOS PARA BOTONES DE ACCESIBILIDAD Y EMERGENCIA (FUERA DE LAS REGLAS DEL HEADER)** */
     .text-adjust-buttons {
         position: fixed;
         bottom: 1.5rem;
@@ -272,12 +285,14 @@
 </head>
 <body>
   <header role="banner" aria-label="Cabecera del sitio">
-    <div class="logo">SEDAM</div>
     <nav aria-label="Navegación principal">
-      <a href="index.html" tabindex="0">Inicio</a>
-      <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
-      <a href="contacto.html" tabindex="0">Contacto</a>
-    </nav>
+      <div class="logo">SEDAM</div>
+      <div class="nav-links">
+        <a href="index.html" tabindex="0">Inicio</a>
+        <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
+        <a href="contacto.html" tabindex="0">Contacto</a>
+      </div>
+    </nav>  
   </header>
   <main role="main">
     <h1>Aplicaciones Básicas</h1>
