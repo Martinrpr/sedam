@@ -313,7 +313,6 @@
             visibility: visible;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
             z-index: calc(var(--emergency-btn-z-index) + 1);
-            transition: opacity 0.3s ease;
             user-select: none;
             max-width: 300px;
         }
@@ -425,77 +424,6 @@
             <iframe src="https://www.youtube.com/embed/fvciMs83I9g" title="Cómo encender y apagar el celular" allowfullscreen></iframe>
         </section>
 
-        <section class="capsula" role="region" aria-label="Cápsula 2: Uso básico de la pantalla táctil">
-            <h2>Uso básico de la pantalla táctil</h2>
-            <p>Aprende a deslizar, tocar y usar la pantalla táctil de tu celular.</p>
-            <iframe src="https://www.youtube.com/embed/_VKRF6aHUPI" title="Uso básico de la pantalla táctil" allowfullscreen></iframe>
-        </section>
-
-        <section class="capsula" role="region" aria-label="Cápsula 3: Cómo hacer llamadas telefónicas">
-            <h2>Cómo hacer llamadas telefónicas</h2>
-            <p>Guía sencilla para realizar llamadas desde tu teléfono móvil.</p>
-            <iframe src="https://www.youtube.com/embed/ct1pp0sPe9k" title="Cómo hacer llamadas telefónicas" allowfullscreen></iframe>
-        </section>
-
-        <section class="capsula" role="region" aria-label="Cápsula 4: Configuración básica de WhatsApp">
-            <h2>Configuración básica de WhatsApp</h2>
-            <p>Aprende a configurar tu WhatsApp para mantenerte en contacto con tus seres queridos.</p>
-            <iframe src="https://www.youtube.com/embed/jrujkYObjB8" title="Configuración básica de WhatsApp" allowfullscreen></iframe>
-        </section>
-    </main>
-
-    <!-- Botones para aumentar/disminuir tamaño del texto -->
-    <div class="text-adjust-buttons" aria-label="Ajustes de tamaño de texto">
-        <button id="btnAumentar" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto">A+</button>
-        <button id="btnDisminuir" aria-label="Disminuir tamaño de texto" title="Disminuir tamaño de texto">A−</button>
-        <button id="btnRestablecer" aria-label="Restablecer tamaño de texto" title="Restablecer tamaño de texto">A</button>
-    </div>
-
-    <!-- Botón de emergencia -->
-    <button id="btn-emergencia" title="Llamar a emergencia" aria-label="Llamar a emergencia" onclick="llamarEmergencia()">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="3" fill="none"/>
-            <line x1="12" y1="6" x2="12" y2="14" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="12" cy="18" r="1" fill="white"/>
-        </svg>
-    </button>
-
-    <footer role="contentinfo" class="container">
-        <p>© 2025 SEDAM - Proyecto Innovación Social</p>
-    </footer>
-
-    <script>
-        // Ajuste de tamaño de texto
-        const body = document.body;
-        let scaleFactor = 1;
-        const btnAumentar = document.getElementById('btnAumentar');
-        const btnDisminuir = document.getElementById('btnDisminuir');
-        const btnRestablecer = document.getElementById('btnRestablecer');
-
-        btnAumentar.addEventListener('click', () => {
-            if (scaleFactor < 2) {
-                scaleFactor += 0.1;
-                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
-            }
-        });
-
-        btnDisminuir.addEventListener('click', () => {
-            if (scaleFactor > 0.6) {
-                scaleFactor -= 0.1;
-                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
-            }
-        });
-
-        btnRestablecer.addEventListener('click', () => {
-            scaleFactor = 1;
-            body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
-        });
-
-        // Función para llamar a emergencia (ejemplo, abre el marcador)
-        function llamarEmergencia() {
-            // En un celular, esto abriría el dialer con el número 911 (Chile)
-            window.location.href = "tel:911";
-        }
-    </script>
-</body>
-</html>
+        <section class="capsula" role="region" aria-label="Cápsula 2: Cómo poner o quitar el modo silencio">
+            <h2>Cómo poner o quitar el modo silencio</h2>
+            <p
