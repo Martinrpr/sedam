@@ -1,163 +1,241 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cápsulas sobre Uso de Celulares - SEDAM</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --color-bg: #ffffff;
-    --color-text-base: #6b7280;
-    --color-text-dark: #111827;
-    --color-primary: #2563eb;
-    --color-primary-hover: #1e40af;
-    --border-radius: 0.75rem;
-    --spacing-vertical: 4rem;
-    --font-family: 'Poppins', Arial, sans-serif;
-    --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
-    --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
-  }
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    background-color: var(--color-bg);
-    color: var(--color-text-base);
-    font-family: var(--font-family);
-    margin: 0;
-    padding: 2rem 1rem 4rem 1rem;
-    line-height: 1.6;
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  header {
-    position: sticky;
-    top: 0;
-    background: var(--color-bg);
-    padding: 1rem 0;
-    z-index: 100;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header .logo {
-    color: var(--color-primary);
-    font-weight: 700;
-    font-size: 1.75rem;
-    user-select: none;
-    letter-spacing: 0.05em;
-  }
-  nav a {
-    color: var(--color-text-base);
-    text-decoration: none;
-    font-weight: 600;
-    margin-left: 1.5rem;
-    transition: color 0.3s ease;
-  }
-  nav a:hover, nav a:focus-visible {
-    color: var(--color-primary);
-    outline: none;
-  }
-  main h1 {
-    font-weight: 700;
-    font-size: 3rem;
-    color: var(--color-text-dark);
-    margin: 2rem 0 1rem 0;
-  }
-  main p.intro {
-    font-size: 1.25rem;
-    margin-bottom: 3rem;
-    color: var(--color-text-base);
-  }
-  section.capsula {
-    background: #f9fafb;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-base);
-    padding: 1.5rem 2rem;
-    margin-bottom: 2rem;
-  }
-  section.capsula h2 {
-    font-weight: 700;
-    font-size: 1.75rem;
-    color: var(--color-primary);
-    margin-bottom: 0.75rem;
-  }
-  section.capsula p {
-    font-size: 1.125rem;
-    color: var(--color-text-base);
-    margin-bottom: 1rem;
-  }
-  section.capsula video {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    margin-top: 1rem;
-  }
-  footer {
-    text-align: center;
-    font-size: 0.875rem;
-    color: #9ca3af;
-    padding: 2rem 0 1rem 0;
-    margin-top: auto;
-    user-select: none;
-  }
-  @media (max-width: 480px) {
-    main h1 {
-      font-size: 2.25rem;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cápsulas sobre Uso de Celulares - SEDAM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">   <style>
+    /* ** AÑADIDO: Variables CSS y estilos específicos para los botones flotantes de accesibilidad y emergencia ** */
+    /* Estas variables son adicionales y no deben entrar en conflicto con tu style.css */
+    :root {
+      --text-scale-factor: 1; /* Factor de escala inicial para el texto */
+      --base-font-size: 18px; /* Coincide con tu font-size de body en style.css */
+      --emergency-btn-size: 80px;
+      --emergency-btn-z-index: 1000;
+      --tooltip-font-size: 1rem;
+      --tooltip-font-weight: 700;
+      --tooltip-text-transform: uppercase;
+      --tooltip-padding: 8px 14px;
+      --tooltip-border-radius: 6px;
+      --color-emergency-red: #dc2626;
+    }
+
+    /* AÑADIDO: Solo si tu body en style.css no tiene 'position: relative;' */
+    body {
+        position: relative; /* Necesario para que los botones fixed se posicionen correctamente */
+        /* La siguiente línea sobrescribe tu font-size del body para permitir el escalado,
+           pero la mantiene basada en tu --base-font-size. */
+        font-size: calc(var(--base-font-size) * var(--text-scale-factor));
     }
-  }
-</style>
+
+    .text-adjust-buttons {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        z-index: var(--emergency-btn-z-index);
+    }
+
+    .text-adjust-buttons button {
+        font-size: 1.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 1rem;
+        background: var(--color-primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        user-select: none;
+        box-shadow: 0 4px 8px rgb(37 99 235 / 0.5);
+        transition: background-color 0.3s ease;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+    }
+    .text-adjust-buttons button:hover, .text-adjust-buttons button:focus-visible {
+        background: var(--color-primary-hover);
+        outline: none;
+    }
+
+    #btn-emergencia {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        width: var(--emergency-btn-size);
+        height: var(--emergency-btn-size);
+        background-color: var(--color-emergency-red);
+        border-radius: 50%;
+        border: none;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.6);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: var(--emergency-btn-z-index);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        user-select: none;
+    }
+    #btn-emergencia:hover, #btn-emergencia:focus-visible {
+        background-color: #b91c1c;
+        outline: none;
+        transform: scale(1.15);
+        box-shadow: 0 6px 16px rgba(185, 28, 28, 0.8);
+    }
+    #btn-emergencia svg {
+        width: 40px;
+        height: 40px;
+        stroke: white;
+        stroke-width: 3;
+        fill: none;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+    }
+    #btn-emergencia:hover::after,
+    #btn-emergencia:focus-visible::after {
+        content: attr(title);
+        position: absolute;
+        top: 50%;
+        left: calc(var(--emergency-btn-size) + 10px);
+        transform: translateY(-50%);
+        background: var(--color-emergency-red);
+        color: white;
+        padding: var(--tooltip-padding);
+        border-radius: var(--tooltip-border-radius);
+        font-size: var(--tooltip-font-size);
+        font-weight: var(--tooltip-font-weight);
+        letter-spacing: 0.1em;
+        text-transform: var(--tooltip-text-transform);
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        z-index: var(--emergency-btn-z-index) + 1;
+        transition: opacity 0.3s ease;
+        user-select: none;
+        max-width: 300px;
+    }
+    #btn-emergencia::after {
+        content: '';
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-  <header role="banner" aria-label="Cabecera del sitio">
-    <nav aria-label="Navegación principal">
-      <div class="logo">SEDAM</div>
-      <div class="nav-links">
-        <a href="index.html" tabindex="0">Inicio</a>
-        <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
-        <a href="contacto.html" tabindex="0">Contacto</a>
-      </div>
-    </nav>
-  </header>
-  <main role="main">
-    <h1>Cápsulas sobre Uso de Celulares</h1>
-    <p class="intro">Esta sección contiene videos y textos breves diseñados para ayudarte a usar tu celular con confianza y facilidad.</p>
+  <header role="banner" aria-label="Cabecera del sitio">
+    <div class="container">
+    <nav aria-label="Navegación principal">
+      <div class="logo">SEDAM</div>
+      <div class="nav-links">
+        <a href="index.html" tabindex="0">Inicio</a>
+        <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
+        <a href="contacto.html" tabindex="0">Contacto</a>
+      </div>
+    </nav>
+    </div>
+  </header>
+  <main role="main" class="container">
+    <h1>Cápsulas sobre Uso de Celulares</h1>
+    <p class="intro">Esta sección contiene videos y textos breves diseñados para ayudarte a usar tu celular con confianza y facilidad.</p>
+    <section class="content-grid" aria-label="Lista de cápsulas">
+      <article class="content-card bg-1" tabindex="0" role="button" onclick="alert('Cápsula: Encender y apagar celular (próximamente)')">
+        <div class="svg-container">
+          <svg class="anim-cellphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <rect x="20" y="8" width="24" height="48" rx="4" ry="4" stroke="currentColor"/>
+            <line x1="32" y1="50" x2="32" y2="52" stroke="currentColor"/>
+          </svg>
+        </div>
+        <h2 class="content-title">Cómo encender y apagar el celular</h2>
+        <p class="content-description">Aprende paso a paso a encender y apagar tu dispositivo móvil.</p>
+      </article>
+      <article class="content-card bg-2" tabindex="0" role="button" onclick="alert('Cápsula: Hacer y recibir llamadas (próximamente)')">
+        <div class="svg-container">
+          <svg class="anim-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path d="M22 42h20a4 4 0 0 0 4-4V22a4 4 0 0 0-4-4H22a4 4 0 0 0-4 4v16a4 4 0 0 0 4 4z" stroke="currentColor"/>
+            <path d="M38 42l-6 6-6-6" stroke="currentColor"/>
+          </svg>
+        </div>
+        <h2 class="content-title">Hacer y recibir llamadas</h2>
+        <p class="content-description">Domina el arte de las llamadas, incluyendo cómo usar el manos libres.</p>
+      </article>
+      <article class="content-card bg-3" tabindex="0" role="button" onclick="alert('Cápsula: Enviar mensajes de texto (próximamente)')">
+        <div class="svg-container">
+          <svg class="anim-document" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path d="M22 18h20a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2H22a2 2 0 0 1-2-2V20a2 2 0 0 1 2-2z" stroke="currentColor"/>
+            <path d="M26 24h12M26 30h8M26 36h12" stroke="currentColor"/>
+          </svg>
+        </div>
+        <h2 class="content-title">Enviar mensajes de texto</h2>
+        <p class="content-description">Aprende a escribir y enviar mensajes SMS de forma sencilla.</p>
+      </article>
+      <article class="content-card bg-4 faq-card" tabindex="0" role="button" onclick="alert('Cápsula: Preguntas Frecuentes sobre celulares (próximamente)')">
+        <div class="svg-container">
+          <svg class="anim-faq" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <circle cx="32" cy="24" r="8" stroke="currentColor"/>
+            <path d="M32 32v8M32 44h.5" stroke="currentColor"/>
+          </svg>
+        </div>
+        <h2 class="content-title">Preguntas frecuentes</h2>
+        <p class="content-description">Resuelve dudas comunes y encuentra soluciones a problemas con tu celular.</p>
+      </article>
+    </section>
+  </main>
+  <footer role="contentinfo">
+    <div class="container">
+    &copy; 2024 SEDAM. Todos los derechos reservados.
+    </div>
+  </footer>
 
-    <section class="capsula" role="region" aria-label="Cápsula 1: Cómo encender y apagar el celular">
-      <h2>Cómo encender y apagar el celular</h2>
-      <p>Aprende paso a paso a encender y apagar tu dispositivo móvil.</p>
-      <video controls aria-describedby="desc1" preload="metadata" muted>
-        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
-        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
-        Tu navegador no soporta la etiqueta de video.
-      </video>
-      <p id="desc1" hidden>Video mostrando cómo encender y apagar el celular.</p>
-    </section>
+    <div class="text-adjust-buttons">
+        <button id="btn-aumentar-texto" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto" onclick="adjustTextSize(1)"><span>A+</span></button>
+        <button id="btn-disminuir-texto" aria-label="Disminuir tamaño de texto" title="Disminuir tamaño de texto" onclick="adjustTextSize(-1)"><span>A-</span></button>
+    </div>
 
-    <section class="capsula" role="region" aria-label="Cápsula 2: Uso básico de la pantalla táctil">
-      <h2>Uso básico de la pantalla táctil</h2>
-      <p>Aprende a deslizar, tocar y usar la pantalla táctil de tu celular.</p>
-      <video controls aria-describedby="desc2" preload="metadata" muted>
-        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/bee.webm" type="video/webm" />
-        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/bee.mp4" type="video/mp4" />
-        Tu navegador no soporta la etiqueta de video.
-      </video>
-      <p id="desc2" hidden>Video explicando el uso básico de la pantalla táctil.</p>
-    </section>
+    <button id="btn-emergencia" aria-label="Contactos de emergencia" title="Contactos de emergencia" onclick="location.href='contactos-emergencia.html'">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
+            <path d="M12 8v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="1" fill="white"/>
+        </svg>
+    </button>
 
-  </main>
-  <footer role="contentinfo">
-    &copy; 2024 SEDAM. Todos los derechos reservados.
-  </footer>
+    <script>
+        const root = document.documentElement;
+        // Cargar el factor de escala desde localStorage o usar 1 por defecto
+        let textScaleFactor = parseFloat(localStorage.getItem('textScaleFactor')) || 1;
+        const scaleStep = 0.1;
+        const minScaleFactor = 0.8;
+        const maxScaleFactor = 1.5;
+
+        // Aplicar el factor de escala inicial al cargar la página
+        // Esto asegura que si el usuario ajustó el tamaño antes, se mantenga
+        root.style.setProperty('--text-scale-factor', textScaleFactor);
+
+        function adjustTextSize(direction) {
+            let newScaleFactor = textScaleFactor + (direction * scaleStep);
+
+            // Asegurar que el factor de escala no exceda los límites
+            if (newScaleFactor > maxScaleFactor) {
+                newScaleFactor = maxScaleFactor;
+            } else if (newScaleFactor < minScaleFactor) {
+                newScaleFactor = minScaleFactor;
+            }
+
+            // Aplicar el nuevo factor de escala a la variable CSS
+            root.style.setProperty('--text-scale-factor', newScaleFactor);
+            // Actualizar la variable JavaScript
+            textScaleFactor = newScaleFactor;
+            // Guardar el nuevo factor de escala en localStorage para persistencia
+            localStorage.setItem('textScaleFactor', newScaleFactor);
+        }
+    </script>
 </body>
 </html>
