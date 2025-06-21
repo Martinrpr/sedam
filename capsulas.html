@@ -54,7 +54,7 @@
     margin-right: auto;
     position: relative; /* Necesario para los botones fijos */
   }
-    /* Ajustes para el header para que mantenga el formato original */
+    /* Volviendo al estilo original del header */
   header {
     position: sticky;
     top: 0;
@@ -62,15 +62,10 @@
     padding: 1rem 0;
     z-index: 100;
     border-bottom: 1px solid #e5e7eb;
-    /* Estas propiedades se mueven a header nav */
+    display: flex; /* Añadido de nuevo aquí para el formato original */
+    align-items: center; /* Añadido de nuevo aquí para el formato original */
+    justify-content: space-between; /* Añadido de nuevo aquí para el formato original */
   }
-    /* Nuevo estilo: Aplicar flexbox a la nav dentro del header */
-    header nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%; /* Asegura que la nav ocupe todo el ancho disponible en el header */
-    }
   header .logo {
     color: var(--color-primary);
     font-weight: 700;
@@ -243,13 +238,11 @@
 </head>
 <body>
   <header role="banner" aria-label="Cabecera del sitio">
+    <div class="logo">SEDAM</div>
     <nav aria-label="Navegación principal">
-      <div class="logo">SEDAM</div>
-      <div class="nav-links">
-        <a href="index.html" tabindex="0">Inicio</a>
-        <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
-        <a href="contacto.html" tabindex="0">Contacto</a>
-      </div>
+      <a href="index.html" tabindex="0">Inicio</a>
+      <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
+      <a href="contacto.html" tabindex="0">Contacto</a>
     </nav>
   </header>
   <main role="main">
