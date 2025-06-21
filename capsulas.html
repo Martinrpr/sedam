@@ -64,8 +64,8 @@
             position: relative;
             overflow-x: hidden;
 
-            /* Fondo con círculos, consistente con index.html y aplicaciones-basicas.html */
-            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='150' r='120' fill='%23b2dfdb66' opacity='0.3'/%3E%3Ccircle cx='800' cy='50' r='150' fill='%23ffccbc66' opacity='0.3'/%3E%3Ccircle cx='300' cy='450' r='180' fill='%23c5e1f366' opacity='0.3'/%3E%3Ccircle cx='900' cy='700' r='100' fill='%23fff3c666' opacity='0.3'/%3E%3Ccircle cx='50' cy='850' r='160' fill='%23e1bee766' opacity='0.3'/%3E%3Ccircle cx='600' cy='250' r='90' fill='%23b2dfdb66' opacity='0.2'/%3E%3Ccircle cx='150' cy='600' r='110' fill='%23ffccbc66' opacity='0.2'/%3E%3Ccircle cx='450' cy='900' r='140' fill='%23c5e1f366' opacity='0.2'/%3E%3Ccircle cx='750' cy='400' r='130' fill='%23fff3c666' opacity='0.2'/%3E%3Ccircle cx='200' cy='30' r='80' fill='%23e1bee766' opacity='0.2'/%3E%3C/svg%3E");
+            /* Fondo con círculos, igual que en aplicaciones.html */
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='150' r='120' fill='rgba(178, 223, 219, 0.4)' opacity='0.3'/%3E%3Ccircle cx='800' cy='50' r='150' fill='rgba(255, 204, 188, 0.4)' opacity='0.3'/%3E%3Ccircle cx='300' cy='450' r='180' fill='rgba(197, 225, 243, 0.4)' opacity='0.3'/%3E%3Ccircle cx='900' cy='700' r='100' fill='rgba(255, 243, 198, 0.4)' opacity='0.3'/%3E%3Ccircle cx='50' cy='850' r='160' fill='rgba(225, 190, 231, 0.4)' opacity='0.3'/%3E%3Ccircle cx='600' cy='250' r='90' fill='rgba(178, 223, 219, 0.4)' opacity='0.2'/%3E%3Ccircle cx='150' cy='600' r='110' fill='rgba(255, 204, 188, 0.4)' opacity='0.2'/%3E%3Ccircle cx='450' cy='900' r='140' fill='rgba(197, 225, 243, 0.4)' opacity='0.2'/%3E%3Ccircle cx='750' cy='400' r='130' fill='rgba(255, 243, 198, 0.4)' opacity='0.2'/%3E%3Ccircle cx='200' cy='30' r='80' fill='rgba(225, 190, 231, 0.4)' opacity='0.2'/%3E%3C/svg%3E");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -78,7 +78,7 @@
             padding: 0 1rem;
         }
 
-        /* Header (consistent with other pages) */
+        /* Header (igual que en aplicaciones.html) */
         header {
             position: sticky;
             top: 0;
@@ -136,7 +136,7 @@
             gap: 2.5rem;
         }
 
-        /* Main content area */
+        /* Main content */
         main {
             flex-grow: 1;
             max-width: var(--max-width);
@@ -160,7 +160,7 @@
             margin-right: auto;
         }
 
-        /* Estilos para las cápsulas */
+        /* Cápsulas */
         section.capsula {
             background: #f9fafb;
             border: 1px solid #e5e7eb;
@@ -177,7 +177,6 @@
             box-shadow: var(--shadow-hover);
             border-color: var(--color-primary);
         }
-
         section.capsula h2 {
             font-weight: 800;
             font-size: calc(2.25rem * var(--text-scale-factor));
@@ -190,6 +189,8 @@
             color: var(--color-text-base);
             margin-bottom: 1.5rem;
         }
+
+        /* iframe para video embebido */
         section.capsula iframe {
             width: 100%;
             height: 315px;
@@ -201,7 +202,7 @@
             outline-offset: 4px;
         }
 
-        /* Footer (consistent with other pages) */
+        /* Footer (igual que en aplicaciones.html) */
         footer {
             margin-top: auto;
             padding-top: 4rem;
@@ -217,7 +218,7 @@
             padding: 0;
         }
 
-        /* Botones para ajustar texto */
+        /* Botones para ajustar texto - igual que en aplicaciones.html */
         .text-adjust-buttons {
             position: fixed;
             bottom: 1.5rem;
@@ -227,7 +228,6 @@
             gap: var(--tooltip-gap);
             z-index: var(--emergency-btn-z-index);
         }
-
         .text-adjust-buttons button {
             font-size: 2rem;
             padding: 0;
@@ -287,7 +287,7 @@
             width: 40px;
             height: 40px;
             stroke: white;
-            stroke-width: 3;
+            stroke-width: 2;
             fill: none;
             stroke-linejoin: round;
             stroke-linecap: round;
@@ -313,6 +313,7 @@
             visibility: visible;
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
             z-index: calc(var(--emergency-btn-z-index) + 1);
+            transition: opacity 0.3s ease;
             user-select: none;
             max-width: 300px;
         }
@@ -324,7 +325,7 @@
             pointer-events: none;
         }
 
-        /* Media Queries */
+        /* Media Queries igual que en aplicaciones.html */
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
@@ -418,76 +419,72 @@
         <h1>Cápsulas sobre Uso de Celulares</h1>
         <p class="intro">Esta sección contiene videos y textos breves diseñados para ayudarte a usar tu celular con confianza y facilidad.</p>
 
-        <section class="capsula" role="region" aria-label="Cápsula 1: Cómo encender y apagar el celular">
-            <h2>Cómo encender y apagar el celular</h2>
-            <p>Aprende paso a paso a encender y apagar tu dispositivo móvil.</p>
-            <iframe src="https://www.youtube.com/embed/fvciMs83I9g" title="Cómo encender y apagar el celular" allowfullscreen></iframe>
+        <section class="capsula" role="region" aria-label="Cápsula 1: Introducción al uso del celular">
+            <h2>Introducción al uso del celular</h2>
+            <p>Parte 1: Introducción general al uso del celular.</p>
+            <iframe src="https://www.youtube.com/embed/WO-hpL6U_rw" title="Video: Introducción al uso del celular" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="capsula" role="region" aria-label="Cápsula 2: Cómo poner o quitar el modo silencio">
-            <h2>Cómo poner o quitar el modo silencio</h2>
-            <p>Instrucciones fáciles para activar o desactivar el modo silencio en tu celular.</p>
-            <iframe src="https://www.youtube.com/embed/cHNGv8uPArQ" title="Cómo poner o quitar el modo silencio" allowfullscreen></iframe>
+        <section class="capsula" role="region" aria-label="Cápsula 2: Encender el celular y descargar aplicaciones">
+            <h2>Encender el celular y descargar aplicaciones</h2>
+            <p>Parte 2: Cómo encender el celular y descargar aplicaciones.</p>
+            <iframe src="https://www.youtube.com/embed/_AkFFoe6gxY" title="Video: Encender el celular y descargar aplicaciones" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="capsula" role="region" aria-label="Cápsula 3: Cómo subir o bajar el brillo">
-            <h2>Cómo subir o bajar el brillo</h2>
-            <p>Aprende a ajustar el brillo de la pantalla para mejorar la visibilidad y ahorrar batería.</p>
-            <iframe src="https://www.youtube.com/embed/ubnnkFx9x5g" title="Cómo subir o bajar el brillo" allowfullscreen></iframe>
+        <section class="capsula" role="region" aria-label="Cápsula 3: Fotografías y llamadas">
+            <h2>Fotografías y llamadas</h2>
+            <p>Parte 3: Cómo tomar fotos y realizar llamadas.</p>
+            <iframe src="https://www.youtube.com/embed/sYHnPdXrmNg" title="Video: Fotografías y llamadas" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="capsula" role="region" aria-label="Cápsula 4: Cómo usar la linterna">
-            <h2>Cómo usar la linterna</h2>
-            <p>Un tutorial sencillo para activar y desactivar la linterna en tu celular.</p>
-            <iframe src="https://www.youtube.com/embed/mSJ8dlOWqFM" title="Cómo usar la linterna" allowfullscreen></iframe>
+        <section class="capsula" role="region" aria-label="Cápsula 4: Cómo subir y bajar el brillo">
+            <h2>Cómo subir y bajar el brillo</h2>
+            <p>Aprende a ajustar el brillo de la pantalla de tu celular para mayor comodidad.</p>
+            <iframe src="https://www.youtube.com/embed/wINwyWze8jw" title="Video: Cómo subir y bajar el brillo" frameborder="0" allowfullscreen></iframe>
         </section>
     </main>
 
-    <!-- Botones para aumentar/disminuir tamaño del texto -->
-    <div class="text-adjust-buttons" aria-label="Ajustes de tamaño de texto">
-        <button id="btnAumentar" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto">A+</button>
-        <button id="btnDisminuir" aria-label="Disminuir tamaño de texto" title="Disminuir tamaño de texto">A−</button>
+    <footer role="contentinfo" class="container">
+        <p>© 2025 SEDAM - Apoyo digital para adultos mayores.</p>
+    </footer>
+
+    <div class="text-adjust-buttons" aria-label="Controles para ajustar tamaño de texto">
+        <button id="increase-text" aria-label="Aumentar tamaño de texto">A+</button>
+        <button id="decrease-text" aria-label="Disminuir tamaño de texto">A-</button>
     </div>
 
-    <!-- Botón de emergencia -->
-    <button id="btn-emergencia" title="Llamar a emergencia" aria-label="Llamar a emergencia" onclick="llamarEmergencia()">
+    <button id="btn-emergencia" aria-label="Botón de emergencia" title="Llamar a emergencia">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="3" fill="none"/>
-            <line x1="12" y1="6" x2="12" y2="14" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="12" cy="18" r="1" fill="white"/>
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"></circle>
+            <line x1="12" y1="6" x2="12" y2="14" stroke="white" stroke-width="2" stroke-linecap="round"></line>
+            <circle cx="12" cy="18" r="1" fill="white"></circle>
         </svg>
     </button>
 
-    <footer role="contentinfo" class="container">
-        <p>© 2025 SEDAM - Proyecto Innovación Social</p>
-    </footer>
-
     <script>
-        // Ajuste de tamaño de texto
-        const body = document.body;
-        let scaleFactor = 1;
-        const btnAumentar = document.getElementById('btnAumentar');
-        const btnDisminuir = document.getElementById('btnDisminuir');
+        const increaseBtn = document.getElementById('increase-text');
+        const decreaseBtn = document.getElementById('decrease-text');
 
-        btnAumentar.addEventListener('click', () => {
-            if (scaleFactor < 2) {
-                scaleFactor += 0.1;
-                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
+        increaseBtn.addEventListener('click', () => {
+            let currentScale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--text-scale-factor'));
+            if (currentScale < 2) {
+                document.documentElement.style.setProperty('--text-scale-factor', (currentScale + 0.1).toFixed(2));
             }
         });
 
-        btnDisminuir.addEventListener('click', () => {
-            if (scaleFactor > 0.6) {
-                scaleFactor -= 0.1;
-                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
+        decreaseBtn.addEventListener('click', () => {
+            let currentScale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--text-scale-factor'));
+            if (currentScale > 0.8) {
+                document.documentElement.style.setProperty('--text-scale-factor', (currentScale - 0.1).toFixed(2));
             }
         });
 
-        // Función para llamar a emergencia (ejemplo, abre el marcador)
-        function llamarEmergencia() {
-            // En un celular, esto abriría el dialer con el número 911 (Chile)
-            window.location.href = "tel:911";
-        }
+        // Botón emergencia (puedes cambiar la acción según necesidades)
+        const btnEmergencia = document.getElementById('btn-emergencia');
+        btnEmergencia.addEventListener('click', () => {
+            alert('Llamando a emergencia...');
+            // Aquí podrías agregar la acción real, por ejemplo abrir número de teléfono en móvil
+        });
     </script>
 </body>
 </html>
