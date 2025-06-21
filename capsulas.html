@@ -1,47 +1,213 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cápsulas sobre Uso de Celulares - SEDAM</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">   <style>
-    /* ** AÑADIDO: Variables CSS y estilos específicos para los botones flotantes de accesibilidad y emergencia ** */
-    /* Estas variables son adicionales y no deben entrar en conflicto con tu style.css */
-    :root {
-      --text-scale-factor: 1; /* Factor de escala inicial para el texto */
-      --base-font-size: 18px; /* Coincide con tu font-size de body en style.css */
-      --emergency-btn-size: 80px;
-      --emergency-btn-z-index: 1000;
-      --tooltip-font-size: 1rem;
-      --tooltip-font-weight: 700;
-      --tooltip-text-transform: uppercase;
-      --tooltip-padding: 8px 14px;
-      --tooltip-border-radius: 6px;
-      --color-emergency-red: #dc2626;
-    }
-
-    /* AÑADIDO: Solo si tu body en style.css no tiene 'position: relative;' */
-    body {
-        position: relative; /* Necesario para que los botones fixed se posicionen correctamente */
-        /* La siguiente línea sobrescribe tu font-size del body para permitir el escalado,
-           pero la mantiene basada en tu --base-font-size. */
-        font-size: calc(var(--base-font-size) * var(--text-scale-factor));
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cápsulas sobre Uso de Celulares - SEDAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-text-base: #6b7280;
+    --color-text-dark: #111827;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1e40af;
+    --color-secondary: #fbbf24; /* Añadido de index.html */
+    --color-btn-1: #fde68a; /* Añadido de index.html */
+    --color-btn-2: #bfdbfe; /* Añadido de index.html */
+    --color-btn-3: #bbf7d0; /* Añadido de index.html */
+    --color-btn-4: #fef3c7; /* Añadido de index.html */
+    --color-emergency-red: #dc2626;
+    --border-radius: 0.75rem;
+    --spacing-vertical: 4rem;
+    --font-family: 'Poppins', Arial, sans-serif;
+    --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
+    --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
+    /* Nuevas variables de index.html para los botones flotantes */
+    --emergency-btn-size: 80px;
+    --emergency-btn-z-index: 11000;
+    --tooltip-font-size: 1rem;
+    --tooltip-color: #dc2626;
+    --tooltip-font-weight: 700;
+    --tooltip-text-transform: uppercase;
+    --tooltip-padding: 8px 14px;
+    --tooltip-border-radius: 6px;
+    --tooltip-gap: 10px;
+    --text-scale-factor: 1; /* Factor de escala inicial */
+    --base-font-size: 18px; /* Tamaño base para el body */
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    /* Modificado: Añadido position: relative y uso de calc para font-size */
+    background-color: var(--color-bg);
+    color: var(--color-text-base);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 2rem 1rem 4rem 1rem;
+    line-height: 1.6;
+    font-size: calc(var(--base-font-size) * var(--text-scale-factor)); /* Usamos calc() para que el tamaño de fuente sea adaptable */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; /* Necesario para que los botones fixed se posicionen correctamente */
+  }
+  header {
+    /* Modificado: Quitada la propiedad position: sticky aquí y movida a body para consistencia con index.html */
+    top: 0;
+    background: var(--color-bg);
+    /* Modificado: padding de index.html */
+    padding: 0; /* padding se maneja mejor en .container o nav */
+    z-index: 100;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Este es para el header general */
+    /* Añadido para el header según index.html */
+    width: 100%;
+    margin-bottom: 2rem; /* Espacio debajo del header */
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05); /* Sombra consistente con index.html */
+  }
+    /* Añadido: Estilos para el contenedor del header para consistencia con index.html */
+    header .container {
+        max-width: 1200px; /* Igual que en index.html */
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: 100%; /* Asegurar que ocupe todo el ancho del header */
     }
-
+    /* Estilos para nav dentro del header, según index.html */
+    header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 5rem; /* Altura de la navegación, igual que index.html */
+        width: 100%; /* Para que el nav ocupe el container */
+    }
+  header .logo {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.75rem;
+    user-select: none;
+    letter-spacing: 0.05em;
+  }
+    /* Modificado: Estilos nav a de index.html */
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        font-weight: 600;
+        font-size: 1rem;
+        align-items: center;
+    }
+  nav a {
+    color: inherit; /* Cambiado a inherit para usar el color del .nav-links */
+    text-decoration: none;
+    font-weight: 600; /* Ya lo tienes, solo para reafirmar */
+    margin-left: 1.5rem; /* Ya lo tienes, pero el .nav-links usa gap */
+    padding: 0.5rem 1rem; /* Añadido de index.html */
+    border-radius: var(--border-radius); /* Añadido de index.html */
+    background-color: transparent; /* Añadido de index.html */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Modificado para incluir background-color */
+    user-select: none; /* Añadido de index.html */
+  }
+    /* Modificado: a:hover, a:focus-visible para consistencia con index.html */
+  nav a:hover, nav a:focus-visible {
+    color: white; /* Cambiado a white para hover, consistente con index.html */
+    background-color: var(--color-primary); /* Añadido de index.html */
+    outline: none;
+  }
+  main {
+    /* Modificado: Removido max-width, margin-left/right auto, y padding top/bottom ya que el header está fuera de main */
+    /* La main tendrá su propio padding y un container si es necesario */
+    flex-grow: 1;
+    padding-top: var(--spacing-vertical); /* Usar variable de espaciado */
+    padding-bottom: var(--spacing-vertical); /* Usar variable de espaciado */
+    max-width: 1200px; /* Consistente con index.html container */
+    margin: 0 auto; /* Centrar el contenido de main */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center; /* Alineación de texto, si aplica para el h1 y p.intro */
+  }
+  main h1 {
+    font-weight: 700;
+    /* Modificado para usar text-scale-factor */
+    font-size: calc(3rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
+    color: var(--color-text-dark);
+    margin: 2rem 0 1rem 0;
+  }
+  main p.intro {
+    /* Modificado para usar text-scale-factor */
+    font-size: calc(1.25rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
+    margin-bottom: 3rem;
+    color: var(--color-text-base);
+    max-width: 640px; /* Añadido para consistencia con index.html */
+    margin-left: auto; /* Centrar intro párrafo */
+    margin-right: auto; /* Centrar intro párrafo */
+  }
+  section.capsula {
+    background: #f9fafb;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-base);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+  section.capsula h2 {
+    font-weight: 700;
+    /* Modificado para usar text-scale-factor */
+    font-size: calc(1.75rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+  section.capsula p {
+    /* Modificado para usar text-scale-factor */
+    font-size: calc(1.125rem * var(--text-scale-factor)); /* Ajuste de tamaño de fuente */
+    color: var(--color-text-base);
+    margin-bottom: 1rem;
+  }
+  section.capsula video {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+  }
+  footer {
+    text-align: center;
+    font-size: calc(0.875rem * var(--text-scale-factor)); /* Modificado para usar text-scale-factor */
+    color: #9ca3af;
+    padding: 2rem 0 1rem 0;
+    margin-top: auto;
+    user-select: none;
+    /* Añadido de index.html para la línea superior del footer */
+    border-top: 1px solid #e5e7eb;
+  }
+  @media (max-width: 480px) {
+    main h1 {
+    /* Modificado para usar text-scale-factor */
+      font-size: calc(2.25rem * var(--text-scale-factor));
+    }
+    /* Removido el font-size del body en 480px, ya que se maneja con el escalador */
+  }
+    /* ** AÑADIDO: Estilos específicos para los botones flotantes de accesibilidad y emergencia (directamente de index.html) ** */
     .text-adjust-buttons {
         position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
+        bottom: 1rem; /* Consistente con index.html */
+        right: 1rem; /* Consistente con index.html */
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        z-index: var(--emergency-btn-z-index);
+        flex-direction: column; /* Apilar verticalmente */
+        gap: 0.5rem; /* Espacio entre botones */
+        z-index: var(--emergency-btn-z-index); /* Usar la variable */
     }
 
     .text-adjust-buttons button {
         font-size: 1.5rem;
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 1rem; /* Ajustar padding para mejor visualización */
         border-radius: 1rem;
         background: var(--color-primary);
         color: white;
@@ -50,18 +216,19 @@
         user-select: none;
         box-shadow: 0 4px 8px rgb(37 99 235 / 0.5);
         transition: background-color 0.3s ease;
-        width: 70px;
-        height: 70px;
+        width: 70px; /* Ancho fijo para los botones */
+        height: 70px; /* Alto fijo para los botones */
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: 800;
+        font-weight: 800; /* Hace el texto más grueso */
     }
     .text-adjust-buttons button:hover, .text-adjust-buttons button:focus-visible {
         background: var(--color-primary-hover);
         outline: none;
     }
 
+    /* Botón emergente de emergencia (alarma roja) */
     #btn-emergencia {
         position: fixed;
         bottom: 1.5rem;
@@ -95,6 +262,7 @@
         stroke-linejoin: round;
         stroke-linecap: round;
     }
+    /* Tooltip on hover to right */
     #btn-emergencia:hover::after,
     #btn-emergencia:focus-visible::after {
         content: attr(title);
@@ -104,8 +272,8 @@
         transform: translateY(-50%);
         background: var(--color-emergency-red);
         color: white;
-        padding: var(--tooltip-padding);
-        border-radius: var(--tooltip-border-radius);
+        padding: 8px 14px;
+        border-radius: 6px;
         font-size: var(--tooltip-font-size);
         font-weight: var(--tooltip-font-weight);
         letter-spacing: 0.1em;
@@ -127,11 +295,11 @@
         visibility: hidden;
         pointer-events: none;
     }
-  </style>
+</style>
 </head>
 <body>
   <header role="banner" aria-label="Cabecera del sitio">
-    <div class="container">
+    <div class="container">
     <nav aria-label="Navegación principal">
       <div class="logo">SEDAM</div>
       <div class="nav-links">
@@ -140,58 +308,39 @@
         <a href="contacto.html" tabindex="0">Contacto</a>
       </div>
     </nav>
-    </div>
+    </div>
   </header>
-  <main role="main" class="container">
+  <main role="main">
     <h1>Cápsulas sobre Uso de Celulares</h1>
     <p class="intro">Esta sección contiene videos y textos breves diseñados para ayudarte a usar tu celular con confianza y facilidad.</p>
-    <section class="content-grid" aria-label="Lista de cápsulas">
-      <article class="content-card bg-1" tabindex="0" role="button" onclick="alert('Cápsula: Encender y apagar celular (próximamente)')">
-        <div class="svg-container">
-          <svg class="anim-cellphone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-            <rect x="20" y="8" width="24" height="48" rx="4" ry="4" stroke="currentColor"/>
-            <line x1="32" y1="50" x2="32" y2="52" stroke="currentColor"/>
-          </svg>
-        </div>
-        <h2 class="content-title">Cómo encender y apagar el celular</h2>
-        <p class="content-description">Aprende paso a paso a encender y apagar tu dispositivo móvil.</p>
-      </article>
-      <article class="content-card bg-2" tabindex="0" role="button" onclick="alert('Cápsula: Hacer y recibir llamadas (próximamente)')">
-        <div class="svg-container">
-          <svg class="anim-chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-            <path d="M22 42h20a4 4 0 0 0 4-4V22a4 4 0 0 0-4-4H22a4 4 0 0 0-4 4v16a4 4 0 0 0 4 4z" stroke="currentColor"/>
-            <path d="M38 42l-6 6-6-6" stroke="currentColor"/>
-          </svg>
-        </div>
-        <h2 class="content-title">Hacer y recibir llamadas</h2>
-        <p class="content-description">Domina el arte de las llamadas, incluyendo cómo usar el manos libres.</p>
-      </article>
-      <article class="content-card bg-3" tabindex="0" role="button" onclick="alert('Cápsula: Enviar mensajes de texto (próximamente)')">
-        <div class="svg-container">
-          <svg class="anim-document" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-            <path d="M22 18h20a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2H22a2 2 0 0 1-2-2V20a2 2 0 0 1 2-2z" stroke="currentColor"/>
-            <path d="M26 24h12M26 30h8M26 36h12" stroke="currentColor"/>
-          </svg>
-        </div>
-        <h2 class="content-title">Enviar mensajes de texto</h2>
-        <p class="content-description">Aprende a escribir y enviar mensajes SMS de forma sencilla.</p>
-      </article>
-      <article class="content-card bg-4 faq-card" tabindex="0" role="button" onclick="alert('Cápsula: Preguntas Frecuentes sobre celulares (próximamente)')">
-        <div class="svg-container">
-          <svg class="anim-faq" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-            <circle cx="32" cy="24" r="8" stroke="currentColor"/>
-            <path d="M32 32v8M32 44h.5" stroke="currentColor"/>
-          </svg>
-        </div>
-        <h2 class="content-title">Preguntas frecuentes</h2>
-        <p class="content-description">Resuelve dudas comunes y encuentra soluciones a problemas con tu celular.</p>
-      </article>
+
+    <section class="capsula" role="region" aria-label="Cápsula 1: Cómo encender y apagar el celular">
+      <h2>Cómo encender y apagar el celular</h2>
+      <p>Aprende paso a paso a encender y apagar tu dispositivo móvil.</p>
+      <video controls aria-describedby="desc1" preload="metadata" muted>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+        Tu navegador no soporta la etiqueta de video.
+      </video>
+      <p id="desc1" hidden>Video mostrando cómo encender y apagar el celular.</p>
     </section>
+
+    <section class="capsula" role="region" aria-label="Cápsula 2: Uso básico de la pantalla táctil">
+      <h2>Uso básico de la pantalla táctil</h2>
+      <p>Aprende a deslizar, tocar y usar la pantalla táctil de tu celular.</p>
+      <video controls aria-describedby="desc2" preload="metadata" muted>
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/bee.webm" type="video/webm" />
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/bee.mp4" type="video/mp4" />
+        Tu navegador no soporta la etiqueta de video.
+      </video>
+      <p id="desc2" hidden>Video explicando el uso básico de la pantalla táctil.</p>
+    </section>
+
   </main>
   <footer role="contentinfo">
-    <div class="container">
+    <div class="container">
     &copy; 2024 SEDAM. Todos los derechos reservados.
-    </div>
+    </div>
   </footer>
 
     <div class="text-adjust-buttons">
