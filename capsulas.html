@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cápsulas sobre Uso de Celulares - SEDAM</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
 <style>
   :root {
     --color-bg: #ffffff;
@@ -12,135 +12,71 @@
     --color-text-dark: #111827;
     --color-primary: #2563eb;
     --color-primary-hover: #1e40af;
-    --color-secondary: #fbbf24; /* Añadido para consistencia con index.html */
-    --color-btn-1: #fde68a; /* Añadido para consistencia con index.html */
-    --color-btn-2: #bfdbfe; /* Añadido para consistencia con index.html */
-    --color-btn-3: #bbf7d0; /* Añadido para consistencia con index.html */
-    --color-btn-4: #fef3c7; /* Añadido para consistencia con index.html */
-    --color-emergency-red: #dc2626; /* Añadido de index.html */
     --border-radius: 0.75rem;
     --spacing-vertical: 4rem;
     --font-family: 'Poppins', Arial, sans-serif;
     --shadow-base: 0 4px 8px rgb(0 0 0 / 0.05);
     --shadow-hover: 0 8px 20px rgb(37 99 235 / 0.3);
-    --emergency-btn-size: 80px; /* Añadido de index.html */
-    --emergency-btn-z-index: 11000; /* Añadido de index.html */
-    --tooltip-font-size: 1rem; /* Añadido de index.html */
-    --tooltip-color: #dc2626; /* Añadido de index.html */
-    --tooltip-font-weight: 700; /* Añadido de index.html */
-    --tooltip-text-transform: uppercase; /* Añadido de index.html */
-    --tooltip-padding: 8px 14px; /* Añadido de index.html */
-    --tooltip-border-radius: 6px; /* Añadido de index.html */
-    --tooltip-gap: 10px; /* Añadido de index.html */
-    --text-scale-factor: 1; /* Factor de escala inicial, de index.html */
-    --base-font-size: 18px; /* Tamaño base para el body, de index.html */
   }
   *, *::before, *::after {
     box-sizing: border-box;
   }
   body {
-    margin: 0; /* Aseguramos que no haya margen por defecto */
     background-color: var(--color-bg);
     color: var(--color-text-base);
     font-family: var(--font-family);
+    margin: 0;
+    padding: 2rem 1rem 4rem 1rem;
     line-height: 1.6;
-    /* Aplicado el escalado de texto aquí */
-    font-size: calc(var(--base-font-size) * var(--text-scale-factor));
+    font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    position: relative; /* Necesario para que los botones fixed se posicionen correctamente */
-    /* Removido max-width y margin auto del body para que el header y footer se extiendan */
-    /* padding-top/bottom se maneja en main, y padding-left/right en .container */
-  }
-  a { /* Añadido de index.html */
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    user-select: none;
-  }
-  a:hover, a:focus-visible, button:hover, button:focus-visible { /* Modificado para incluir button */
-    color: var(--color-primary);
-    outline: none;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
   }
   header {
     position: sticky;
     top: 0;
     background: var(--color-bg);
-    /* padding: 1rem 0; Eliminado, se maneja con el container */
-    z-index: 1000; /* Aumentado z-index para estar sobre los botones flotantes si hay solapamiento */
+    padding: 1rem 0;
+    z-index: 100;
     border-bottom: 1px solid #e5e7eb;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05); /* Añadido de index.html */
-  }
-  .container { /* Añadido de index.html para consistencia de ancho y centrado */
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 5rem; /* Añadido de index.html para altura de nav */
+    justify-content: space-between;
   }
-  .logo {
+  header .logo {
+    color: var(--color-primary);
     font-weight: 700;
     font-size: 1.75rem;
-    color: var(--color-primary);
     user-select: none;
     letter-spacing: 0.05em;
   }
-  .nav-links { /* Añadido de index.html */
-    display: flex;
-    gap: 2rem;
+  nav a {
+    color: var(--color-text-base);
+    text-decoration: none;
     font-weight: 600;
-    font-size: 1rem;
-    align-items: center;
+    margin-left: 1.5rem;
+    transition: color 0.3s ease;
   }
-  .nav-links a { /* Añadido de index.html */
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    background-color: transparent;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  .nav-links a:hover,
-  .nav-links a:focus-visible { /* Añadido de index.html */
-    background-color: var(--color-primary);
-    color: white;
+  nav a:hover, nav a:focus-visible {
+    color: var(--color-primary);
     outline: none;
-  }
-  main {
-    flex-grow: 1;
-    /* Ajuste de padding y centrado de main para consistencia */
-    padding-top: var(--spacing-vertical);
-    padding-bottom: var(--spacing-vertical);
-    max-width: 1200px; /* Consistente con el container del index.html */
-    margin: 0 auto; /* Centra el contenido de main */
-    padding-left: 1rem;
-    padding-right: 1rem;
-    text-align: center; /* Centrar el h1 y p.intro */
   }
   main h1 {
     font-weight: 700;
-    /* Ajuste para escalado de texto */
-    font-size: calc(3rem * var(--text-scale-factor));
+    font-size: 3rem;
     color: var(--color-text-dark);
     margin: 2rem 0 1rem 0;
-    user-select: text; /* Añadido de index.html */
   }
   main p.intro {
-    /* Ajuste para escalado de texto */
-    font-size: calc(1.25rem * var(--text-scale-factor));
+    font-size: 1.25rem;
     margin-bottom: 3rem;
     color: var(--color-text-base);
-    max-width: 640px; /* Añadido de index.html */
-    margin-left: auto; /* Centrar el párrafo */
-    margin-right: auto; /* Centrar el párrafo */
-    user-select: text; /* Añadido de index.html */
   }
   section.capsula {
     background: #f9fafb;
@@ -151,18 +87,14 @@
   }
   section.capsula h2 {
     font-weight: 700;
-    /* Ajuste para escalado de texto */
-    font-size: calc(1.75rem * var(--text-scale-factor));
+    font-size: 1.75rem;
     color: var(--color-primary);
     margin-bottom: 0.75rem;
-    user-select: text; /* Añadido de index.html */
   }
   section.capsula p {
-    /* Ajuste para escalado de texto */
-    font-size: calc(1.125rem * var(--text-scale-factor));
+    font-size: 1.125rem;
     color: var(--color-text-base);
     margin-bottom: 1rem;
-    user-select: text; /* Añadido de index.html */
   }
   section.capsula video {
     width: 100%;
@@ -172,128 +104,21 @@
   }
   footer {
     text-align: center;
-    /* Ajuste para escalado de texto */
-    font-size: calc(0.875rem * var(--text-scale-factor));
+    font-size: 0.875rem;
     color: #9ca3af;
     padding: 2rem 0 1rem 0;
     margin-top: auto;
     user-select: none;
-    border-top: 1px solid #e5e7eb; /* Añadido de index.html */
   }
   @media (max-width: 480px) {
     main h1 {
-    /* Ajuste para escalado de texto */
-      font-size: calc(2.25rem * var(--text-scale-factor));
+      font-size: 2.25rem;
     }
-    /* Removido body font-size aquí para que el escalador sea el único control */
   }
-
-    /* ** ESTILOS DE LOS BOTONES FLOTANTES (COPIADOS DE INDEX.HTML) ** */
-    .text-adjust-buttons {
-        position: fixed;
-        bottom: 1rem;
-        right: 1rem;
-        display: flex;
-        flex-direction: column; /* Apilar verticalmente */
-        gap: 0.5rem; /* Espacio entre botones */
-        z-index: var(--emergency-btn-z-index); /* Usar variable */
-    }
-
-    .text-adjust-buttons button {
-        font-size: 1.5rem;
-        padding: 0.75rem 1rem; /* Ajustar padding para mejor visualización */
-        border-radius: 1rem;
-        background: var(--color-primary);
-        color: white;
-        border: none;
-        cursor: pointer;
-        user-select: none;
-        box-shadow: 0 4px 8px rgb(37 99 235 / 0.5);
-        transition: background-color 0.3s ease;
-        width: 70px; /* Ancho fijo para los botones */
-        height: 70px; /* Alto fijo para los botones */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800; /* Hace el texto más grueso */
-    }
-    .text-adjust-buttons button:hover, .text-adjust-buttons button:focus-visible {
-        background: var(--color-primary-hover);
-        outline: none;
-    }
-
-    /* Botón emergente de emergencia (alarma roja) */
-    #btn-emergencia {
-        position: fixed;
-        bottom: 1.5rem;
-        left: 1.5rem;
-        width: var(--emergency-btn-size);
-        height: var(--emergency-btn-size);
-        background-color: var(--color-emergency-red);
-        border-radius: 50%;
-        border: none;
-        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.6);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: var(--emergency-btn-z-index);
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        user-select: none;
-    }
-    #btn-emergencia:hover, #btn-emergencia:focus-visible {
-        background-color: #b91c1c;
-        outline: none;
-        transform: scale(1.15);
-        box-shadow: 0 6px 16px rgba(185, 28, 28, 0.8);
-    }
-    #btn-emergencia svg {
-        width: 40px;
-        height: 40px;
-        stroke: white;
-        stroke-width: 3;
-        fill: none;
-        stroke-linejoin: round;
-        stroke-linecap: round;
-    }
-    /* Tooltip on hover to right */
-    #btn-emergencia:hover::after,
-    #btn-emergencia:focus-visible::after {
-        content: attr(title);
-        position: absolute;
-        top: 50%;
-        left: calc(var(--emergency-btn-size) + 10px);
-        transform: translateY(-50%);
-        background: var(--color-emergency-red);
-        color: white;
-        padding: 8px 14px;
-        border-radius: 6px;
-        font-size: var(--tooltip-font-size);
-        font-weight: var(--tooltip-font-weight);
-        letter-spacing: 0.1em;
-        text-transform: var(--tooltip-text-transform);
-        white-space: nowrap;
-        pointer-events: none;
-        opacity: 1;
-        visibility: visible;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        z-index: calc(var(--emergency-btn-z-index) + 1); /* Asegurar que el tooltip esté encima de todo */
-        transition: opacity 0.3s ease;
-        user-select: none;
-        max-width: 300px;
-    }
-    #btn-emergencia::after {
-        content: '';
-        position: absolute;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
 </style>
 </head>
 <body>
   <header role="banner" aria-label="Cabecera del sitio">
-    <div class="container">
     <nav aria-label="Navegación principal">
       <div class="logo">SEDAM</div>
       <div class="nav-links">
@@ -302,7 +127,6 @@
         <a href="contacto.html" tabindex="0">Contacto</a>
       </div>
     </nav>
-    </div>
   </header>
   <main role="main">
     <h1>Cápsulas sobre Uso de Celulares</h1>
@@ -332,52 +156,7 @@
 
   </main>
   <footer role="contentinfo">
-    <div class="container">
     &copy; 2024 SEDAM. Todos los derechos reservados.
-    </div>
   </footer>
-
-    <div class="text-adjust-buttons">
-        <button id="btn-aumentar-texto" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto" onclick="adjustTextSize(1)"><span>A+</span></button>
-        <button id="btn-disminuir-texto" aria-label="Disminuir tamaño de texto" title="Disminuir tamaño de texto" onclick="adjustTextSize(-1)"><span>A-</span></button>
-    </div>
-
-    <button id="btn-emergencia" aria-label="Contactos de emergencia" title="Contactos de emergencia" onclick="location.href='contactos-emergencia.html'">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2"/>
-            <path d="M12 8v4" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="12" cy="16" r="1" fill="white"/>
-        </svg>
-    </button>
-
-    <script>
-        const root = document.documentElement;
-        // Cargar el factor de escala desde localStorage o usar 1 por defecto
-        let textScaleFactor = parseFloat(localStorage.getItem('textScaleFactor')) || 1;
-        const scaleStep = 0.1;
-        const minScaleFactor = 0.8;
-        const maxScaleFactor = 1.5;
-
-        // Aplicar el factor de escala inicial al cargar la página
-        root.style.setProperty('--text-scale-factor', textScaleFactor);
-
-        function adjustTextSize(direction) {
-            let newScaleFactor = textScaleFactor + (direction * scaleStep);
-
-            // Asegurar que el factor de escala no exceda los límites
-            if (newScaleFactor > maxScaleFactor) {
-                newScaleFactor = maxScaleFactor;
-            } else if (newScaleFactor < minScaleFactor) {
-                newScaleFactor = minScaleFactor;
-            }
-
-            // Aplicar el nuevo factor de escala a la variable CSS
-            root.style.setProperty('--text-scale-factor', newScaleFactor);
-            // Actualizar la variable JavaScript
-            textScaleFactor = newScaleFactor;
-            // Guardar el nuevo factor de escala en localStorage para persistencia
-            localStorage.setItem('textScaleFactor', newScaleFactor);
-        }
-    </script>
 </body>
 </html>
