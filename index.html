@@ -88,21 +88,24 @@
             height: 5rem;
         }
         .logo {
-            font-weight: 700;
-            font-size: 1.75rem;
+            /* CAMBIOS AQUÍ: LOGO SEDAM */
+            font-weight: 800; /* Más negrita */
+            font-size: 2.5rem; /* Más grande */
             color: var(--color-primary);
             user-select: none;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.07em; /* Ligeramente más espaciado para mejor legibilidad */
         }
         .nav-links {
             display: flex;
             gap: 2rem;
             font-weight: 600;
-            font-size: 1rem;
+            /* CAMBIOS AQUÍ: BOTONES DE NAVEGACIÓN */
+            font-size: 1.15rem; /* Más grande */
             align-items: center;
         }
         .nav-links a {
-            padding: 0.5rem 1rem;
+            /* CAMBIOS AQUÍ: BOTONES DE NAVEGACIÓN */
+            padding: 0.75rem 1.25rem; /* Más padding para hacerlos más grandes */
             border-radius: var(--border-radius);
             background-color: transparent;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -443,10 +446,14 @@
 
     <script>
         const root = document.documentElement;
-        let textScaleFactor = parseFloat(getComputedStyle(root).getPropertyValue('--text-scale-factor'));
+        // Cargar el factor de escala desde localStorage o usar 1 por defecto
+        let textScaleFactor = parseFloat(localStorage.getItem('textScaleFactor')) || 1;
         const scaleStep = 0.1; // Incremento/decremento de escala
         const minScaleFactor = 0.8; // Escala mínima
         const maxScaleFactor = 1.5; // Escala máxima
+
+        // Aplicar el factor de escala inicial al cargar la página
+        root.style.setProperty('--text-scale-factor', textScaleFactor);
 
         function adjustTextSize(direction) { // direction: 1 para aumentar, -1 para disminuir
             let newScaleFactor = textScaleFactor + (direction * scaleStep);
@@ -458,9 +465,12 @@
                 newScaleFactor = minScaleFactor;
             }
 
-            // Actualizar la variable CSS
+            // Aplicar el nuevo factor de escala a la variable CSS
             root.style.setProperty('--text-scale-factor', newScaleFactor);
-            textScaleFactor = newScaleFactor; // Actualizar la variable JS
+            // Actualizar la variable JavaScript
+            textScaleFactor = newScaleFactor;
+            // Guardar el nuevo factor de escala en localStorage para persistencia
+            localStorage.setItem('textScaleFactor', newScaleFactor);
         }
     </script>
 </body>
