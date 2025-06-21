@@ -426,4 +426,68 @@
 
         <section class="capsula" role="region" aria-label="Cápsula 2: Cómo poner o quitar el modo silencio">
             <h2>Cómo poner o quitar el modo silencio</h2>
-            <p
+            <p>Instrucciones fáciles para activar o desactivar el modo silencio en tu celular.</p>
+            <iframe src="https://www.youtube.com/embed/cHNGv8uPArQ" title="Cómo poner o quitar el modo silencio" allowfullscreen></iframe>
+        </section>
+
+        <section class="capsula" role="region" aria-label="Cápsula 3: Cómo subir o bajar el brillo">
+            <h2>Cómo subir o bajar el brillo</h2>
+            <p>Aprende a ajustar el brillo de la pantalla para mejorar la visibilidad y ahorrar batería.</p>
+            <iframe src="https://www.youtube.com/embed/ubnnkFx9x5g" title="Cómo subir o bajar el brillo" allowfullscreen></iframe>
+        </section>
+
+        <section class="capsula" role="region" aria-label="Cápsula 4: Cómo usar la linterna">
+            <h2>Cómo usar la linterna</h2>
+            <p>Un tutorial sencillo para activar y desactivar la linterna en tu celular.</p>
+            <iframe src="https://www.youtube.com/embed/mSJ8dlOWqFM" title="Cómo usar la linterna" allowfullscreen></iframe>
+        </section>
+    </main>
+
+    <!-- Botones para aumentar/disminuir tamaño del texto -->
+    <div class="text-adjust-buttons" aria-label="Ajustes de tamaño de texto">
+        <button id="btnAumentar" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto">A+</button>
+        <button id="btnDisminuir" aria-label="Disminuir tamaño de texto" title="Disminuir tamaño de texto">A−</button>
+    </div>
+
+    <!-- Botón de emergencia -->
+    <button id="btn-emergencia" title="Llamar a emergencia" aria-label="Llamar a emergencia" onclick="llamarEmergencia()">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="10" stroke="white" stroke-width="3" fill="none"/>
+            <line x1="12" y1="6" x2="12" y2="14" stroke="white" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="1" fill="white"/>
+        </svg>
+    </button>
+
+    <footer role="contentinfo" class="container">
+        <p>© 2025 SEDAM - Proyecto Innovación Social</p>
+    </footer>
+
+    <script>
+        // Ajuste de tamaño de texto
+        const body = document.body;
+        let scaleFactor = 1;
+        const btnAumentar = document.getElementById('btnAumentar');
+        const btnDisminuir = document.getElementById('btnDisminuir');
+
+        btnAumentar.addEventListener('click', () => {
+            if (scaleFactor < 2) {
+                scaleFactor += 0.1;
+                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
+            }
+        });
+
+        btnDisminuir.addEventListener('click', () => {
+            if (scaleFactor > 0.6) {
+                scaleFactor -= 0.1;
+                body.style.setProperty('--text-scale-factor', scaleFactor.toFixed(2));
+            }
+        });
+
+        // Función para llamar a emergencia (ejemplo, abre el marcador)
+        function llamarEmergencia() {
+            // En un celular, esto abriría el dialer con el número 911 (Chile)
+            window.location.href = "tel:911";
+        }
+    </script>
+</body>
+</html>
