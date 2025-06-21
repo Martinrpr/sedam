@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aplicaciones Básicas - SEDAM</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --color-bg: #ffffff;
@@ -52,7 +52,6 @@
       padding: 2rem 1rem 4rem;
       position: relative; /* Necesario para los botones fijos */
     }
-    /* Ajuste de header para el layout original */
     header {
       position: sticky;
       top: 0;
@@ -61,14 +60,18 @@
       border-bottom: 1px solid #e5e7eb;
       z-index: 100;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
-      display: flex;
-      align-items: center;
-      justify-content: space-between; /* Espacio entre logo y nav */
       max-width: var(--max-width);
       padding: 1rem;
       margin-bottom: 3rem;
       user-select: none;
     }
+    /* Nuevo estilo para la navegación dentro del header */
+    header nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%; /* Asegura que ocupe todo el espacio del header */
+    }
     .logo {
       font-weight: 700;
       font-size: 1.75rem;
@@ -96,14 +99,14 @@
     }
     main h1 {
       font-weight: 700;
-      font-size: calc(3rem * var(--text-scale-factor)); /* Ajuste de fuente */
+      font-size: 3rem;
       color: var(--color-text-dark);
       margin-bottom: 1rem;
       user-select: text;
       text-align: center;
     }
     main p.intro {
-      font-size: calc(1.25rem * var(--text-scale-factor)); /* Ajuste de fuente */
+      font-size: 1.25rem;
       color: var(--color-text-base);
       max-width: 600px;
       margin-bottom: 3rem;
@@ -143,35 +146,42 @@
       stroke-width: 2.5;
     }
     .app-title {
-      font-size: calc(1.5rem * var(--text-scale-factor)); /* Ajuste de fuente */
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--color-text-dark);
       margin-bottom: 0.5rem;
       text-align: center;
     }
     .app-description {
-      font-size: calc(1.125rem * var(--text-scale-factor)); /* Ajuste de fuente */
+      font-size: 1.125rem;
       color: var(--color-text-base);
       text-align: center;
     }
     footer {
-      margin-top: auto; /* Empuja el footer al final de la página */
-      padding-top: 4rem; /* Espacio para que no se pegue al contenido */
+      margin-top: 4rem;
       font-size: 0.875rem;
       color: #9ca3af;
       text-align: center;
       user-select: none;
     }
+    @media (max-width: 700px) {
+      .app-list {
+        grid-template-columns: 1fr;
+      }
+      main h1 {
+        font-size: 2.5rem;
+      }
+    }
 
     /* Estilos para botones de ajuste de texto */
     .text-adjust-buttons {
         position: fixed;
-        bottom: 1.5rem; /* Ajustar posición para que no se superponga */
+        bottom: 1.5rem;
         right: 1.5rem;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        z-index: var(--emergency-btn-z-index); /* Usar la misma z-index que el botón de emergencia */
+        z-index: var(--emergency-btn-z-index);
     }
 
     .text-adjust-buttons button {
@@ -237,7 +247,7 @@
         content: attr(title);
         position: absolute;
         top: 50%;
-        left: calc(var(--emergency-btn-size) + 10px); /* Posicionar a la derecha del botón */
+        left: calc(var(--emergency-btn-size) + 10px);
         transform: translateY(-50%);
         background: var(--color-emergency-red);
         color: white;
@@ -252,49 +262,30 @@
         opacity: 1;
         visibility: visible;
         box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        z-index: var(--emergency-btn-z-index) + 1; /* Un poco más alto que el botón */
+        z-index: var(--emergency-btn-z-index) + 1;
         transition: opacity 0.3s ease;
         user-select: none;
-        max-width: 300px; /* Para asegurar que el tooltip no sea demasiado ancho */
+        max-width: 300px;
     }
     #btn-emergencia::after {
-        content: ''; /* Asegurarse de que el pseudo-elemento esté vacío por defecto */
+        content: '';
         position: absolute;
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
     }
-
-    @media (max-width: 700px) {
-      .app-list {
-        grid-template-columns: 1fr;
-      }
-      main h1 {
-        font-size: calc(2.5rem * var(--text-scale-factor)); /* Ajuste de fuente */
-      }
-    /* Ajuste para el header en móvil */
-    header {
-        flex-direction: column;
-        padding: 1rem;
-        text-align: center;
-    }
-    .nav-links {
-        margin-top: 1rem;
-    }
-    .nav-links a {
-        margin: 0 0.75rem; /* Ajuste para espacio entre links */
-    }
-    }
   </style>
 </head>
 <body>
   <header role="banner" aria-label="Cabecera del sitio">
-    <div class="logo">SEDAM</div>
-    <nav role="navigation" aria-label="Navegación principal">
-      <a href="index.html" tabindex="0">Inicio</a>
-      <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
-      <a href="contacto.html" tabindex="0">Contacto</a>
-    </nav>  
+    <nav aria-label="Navegación principal">
+      <div class="logo">SEDAM</div>
+      <div class="nav-links">
+        <a href="index.html" tabindex="0">Inicio</a>
+        <a href="quienes-somos.html" tabindex="0">Quiénes Somos</a>
+        <a href="contacto.html" tabindex="0">Contacto</a>
+      </div>
+    </nav>
   </header>
   <main role="main">
     <h1>Aplicaciones Básicas</h1>
