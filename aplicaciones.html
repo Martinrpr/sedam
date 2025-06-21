@@ -52,6 +52,7 @@
       padding: 2rem 1rem 4rem;
       position: relative; /* Necesario para los botones fijos */
     }
+    /* Ajustes para el header para que mantenga el formato original */
     header {
       position: sticky;
       top: 0;
@@ -60,17 +61,18 @@
       border-bottom: 1px solid #e5e7eb;
       z-index: 100;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+      /* Estas propiedades se mueven a header nav */
       max-width: var(--max-width);
       padding: 1rem;
       margin-bottom: 3rem;
       user-select: none;
     }
-    /* Nuevo estilo para la navegación dentro del header */
+    /* Nuevo estilo: Aplicar flexbox a la nav dentro del header */
     header nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 100%; /* Asegura que ocupe todo el espacio del header */
+        width: 100%; /* Asegura que la nav ocupe todo el ancho disponible en el header */
     }
     .logo {
       font-weight: 700;
