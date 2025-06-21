@@ -54,6 +54,7 @@
     margin-right: auto;
     position: relative; /* Necesario para los botones fijos */
   }
+    /* Ajustes para el header para que mantenga el formato original */
   header {
     position: sticky;
     top: 0;
@@ -61,14 +62,14 @@
     padding: 1rem 0;
     z-index: 100;
     border-bottom: 1px solid #e5e7eb;
-    /* Quita display: flex, align-items, justify-content de aquí */
+    /* Estas propiedades se mueven a header nav */
   }
-    /* Nuevo estilo para la navegación dentro del header */
+    /* Nuevo estilo: Aplicar flexbox a la nav dentro del header */
     header nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 100%; /* Asegura que ocupe todo el espacio del header */
+        width: 100%; /* Asegura que la nav ocupe todo el ancho disponible en el header */
     }
   header .logo {
     color: var(--color-primary);
